@@ -1,0 +1,107 @@
+[
+  {
+    "src": "assets/images/tours/amarnath_holy_cave.jpg",
+    "title": "Shri Amarnath Ji Holy Cave, J&K",
+    "category": "Pilgrimage Yatra",
+    "desc": "Holy pilgrimage tour across high-altitude Himalayan terrain with full driver support.",
+    "customers": 2
+  },
+  {
+    "src": "assets/images/tours/kedarnath_dham_trek.jpg",
+    "title": "Shri Kedarnath Ji Dham, Uttarakhand",
+    "category": "Pilgrimage Yatra",
+    "desc": "Sacred journey to Kedarnath Temple amidst snowy Himalayan peaks.",
+    "customers": 3
+  },
+  {
+    "src": "assets/images/tours/khatu_shyam_ji_corridor.jpg",
+    "title": "Khatu Shyam Ji Temple, Rajasthan",
+    "category": "Temple Darshan",
+    "desc": "VIP Darshan tour at world renowned Khatu Shyam Ji temple in Sikar.",
+    "customers": 8
+  },
+  {
+    "src": "assets/images/tours/salasar_balaji_dham.jpg",
+    "title": "Salasar Balaji Dham, Rajasthan",
+    "category": "Temple Darshan",
+    "desc": "Devotional day trip to Shri Salasar Hanuman Ji Temple with family comfort.",
+    "customers": 5
+  },
+  {
+    "src": "assets/images/tours/birla_mandir_jaipur.jpg",
+    "title": "Birla Mandir (Laxmi Narayan), Jaipur",
+    "category": "Jaipur Sightseeing",
+    "desc": "Pristine white marble Birla Temple beneath Moti Dungri hill.",
+    "customers": 2
+  },
+  {
+    "src": "assets/images/tours/jal_mahal_jaipur.jpg",
+    "title": "Jal Mahal Palace, Jaipur",
+    "category": "Jaipur Sightseeing",
+    "desc": "Scenic stop at the breathtaking water palace floating in Man Sagar Lake.",
+    "customers": 2
+  },
+  {
+    "src": "assets/images/tours/amer_fort_jaipur.jpg",
+    "title": "Amer Fort & Maota Lake, Jaipur",
+    "category": "Heritage Tour",
+    "desc": "Majestic hillside fort exploration showcasing Rajput architectural grandeur.",
+    "customers": 4
+  },
+  {
+    "src": "assets/images/tours/jaisalmer_desert_safari.jpg",
+    "title": "Sam Sand Dunes, Jaisalmer",
+    "category": "Desert Safari",
+    "desc": "Thar desert adventure with camel rides, golden dunes sunset, and camp folk dances.",
+    "customers": 3
+  },
+  {
+    "src": "assets/images/tours/international_guests_culture.jpg",
+    "title": "Cultural Tour with Foreign Guests",
+    "category": "Cultural & Events",
+    "desc": "Hosting international travelers exploring Rajasthan traditions and royal festivities.",
+    "customers": 4
+  },
+  {
+    "src": "assets/images/tours/jaipur_airport_group_welcome.jpg",
+    "title": "Jaipur Airport VIP Group Arrival",
+    "category": "Airport Transfers",
+    "desc": "Warm traditional garland welcome at Jaipur International Airport Terminal 2.",
+    "customers": 7
+  },
+  {
+    "src": "assets/images/tours/jaipur_airport_drop_pickup.jpg",
+    "title": "Airport Pickup & Drop Service",
+    "category": "Airport Transfers",
+    "desc": "24/7 airport transfers with courteous luggage handling and punctual service.",
+    "customers": 1
+  },
+  {
+    "src": "assets/images/tours/rajasthani_thali_experience.jpg",
+    "title": "Authentic Rajasthani Food Stops",
+    "category": "Hospitality",
+    "desc": "Best stops for authentic Dal Baati Churma, Ker Sangri, and kulhad lassi.",
+    "customers": 2
+  },
+  {
+    "src": "assets/images/tours/family_group_highway_tour.jpg",
+    "title": "Family Highway Tour & Dining",
+    "category": "Outstation Tour",
+    "desc": "Reliable long distance group tours with relaxed highway stops and passenger safety.",
+    "customers": 7
+  },
+  {
+    "src": "assets/images/tours/devotees_darshan_queue.jpg",
+    "title": "Devotional Yatra Support",
+    "category": "Temple Darshan",
+    "desc": "Dedicated assistance throughout long temple darshan queues for seniors and kids.",
+    "customers": 7
+  },
+  {
+    "src": "assets/images/tours/hillside_temple_rajasthan.jpg",
+    "title": "Aravalli Hills Temple Tour",
+    "category": "Temple Darshan",
+    "desc": "Spiritual retreat to historic mountain shrines across Rajasthan.",
+    "customers": 8
+  }
+]

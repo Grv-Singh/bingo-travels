@@ -138,7 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const leads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
         leads.push({ name, phone, tour, date, guests, timestamp: new Date().toISOString() });
         localStorage.setItem('bingo_leads', JSON.stringify(leads));
-      } catch (err) {}
+      } catch (err) {
+        console.error('Failed to save lead locally:', err);
+      }
 
       // Open WhatsApp
       window.open(waUrl, '_blank');

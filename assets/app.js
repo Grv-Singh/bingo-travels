@@ -1,6 +1,11 @@
 // Bingo Tour & Travels Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Clean up any legacy sensitive lead data stored in LocalStorage
+  try {
+    localStorage.removeItem('bingo_leads');
+  } catch (err) {}
+
   // 1. Car 360 Turntable Logic
   const carImg = document.getElementById('carDisplayImg');
   const angleBtns = document.querySelectorAll('.angle-btn');
@@ -32,67 +37,140 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.remove('active');
       }
     });
-  }
 
-  angleBtns.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      stopAutoRotate();
-      setCarAngle(idx);
+    // Close menu on link click
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const icon = burgerToggle.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
     });
-  });
-
-  function startAutoRotate() {
-    autoRotateInterval = setInterval(() => {
-      setCarAngle(currentAngleIdx + 1);
-    }, 2200);
-    autoRotateBtn.classList.add('spinning');
-    autoRotateBtn.innerHTML = '<i class="fas fa-pause"></i> Pause 360°';
   }
 
-  function stopAutoRotate() {
-    if (autoRotateInterval) {
-      clearInterval(autoRotateInterval);
-      autoRotateInterval = null;
+  // 2. Photo Slider Logic (Hero / Photo Showcase)
+  const slideItems = document.querySelectorAll('.slide-item');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('sliderPrev');
+  const nextBtn = document.getElementById('sliderNext');
+
+  if (slideItems.length > 0) {
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function showSlide(index) {
+      currentSlide = (index + slideItems.length) % slideItems.length;
+      slideItems.forEach((item, idx) => {
+        if (idx === currentSlide) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      dots.forEach((dot, idx) => {
+        if (idx === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     }
-    autoRotateBtn.classList.remove('spinning');
-    autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto Rotate';
+
+    function startAutoSlide() {
+      slideInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 4000);
+    }
+
+    function resetAutoSlide() {
+      if (slideInterval) clearInterval(slideInterval);
+      startAutoSlide();
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+        resetAutoSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+        resetAutoSlide();
+      });
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        showSlide(idx);
+        resetAutoSlide();
+      });
+    });
+
+    startAutoSlide();
   }
 
-  autoRotateBtn.addEventListener('click', () => {
-    if (autoRotateInterval) {
-      stopAutoRotate();
-    } else {
-      startAutoRotate();
-    }
-  });
+  // 3. Destinations Search Feature
+  const destSearchInput = document.getElementById('destSearchInput');
+  if (destSearchInput) {
+    destSearchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      const destCards = document.querySelectorAll('.dest-card');
+      const stateBlocks = document.querySelectorAll('.state-block');
 
-  // Start auto-rotate on load
-  startAutoRotate();
+      destCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
 
-  // 2. Gallery Filter & Dynamic Rendering
+      // Show/hide state blocks based on whether any card inside is visible
+      stateBlocks.forEach(block => {
+        const visibleCards = block.querySelectorAll('.dest-card[style="display: flex;"]');
+        const stateTitle = block.querySelector('.state-title-bar').textContent.toLowerCase();
+        if (visibleCards.length > 0 || stateTitle.includes(query) || query === '') {
+          block.style.display = 'block';
+          if (stateTitle.includes(query)) {
+            // Show all cards in this state if state matches
+            block.querySelectorAll('.dest-card').forEach(c => c.style.display = 'flex');
+          }
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 4. Tour Gallery Dynamic Filter & Load
   const galleryGrid = document.getElementById('galleryGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
-  fetch('assets/tours_data.json')
-    .then(res => res.json())
-    .then(data => {
-      renderGallery(data);
+  if (galleryGrid) {
+    fetch('assets/tours_data.json')
+      .then(res => res.json())
+      .then(data => {
+        renderGallery(data);
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const filter = btn.getAttribute('data-filter');
-          if (filter === 'all') {
-            renderGallery(data);
-          } else {
-            const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
-            renderGallery(filtered);
-          }
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            if (filter === 'all') {
+              renderGallery(data);
+            } else {
+              const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
+              renderGallery(filtered);
+            }
+          });
         });
-      });
-    })
-    .catch(err => console.error('Gallery load error:', err));
+      })
+      .catch(err => console.error('Gallery load error:', err));
+  }
 
   function renderGallery(items) {
     if (!galleryGrid) return;
@@ -111,39 +189,45 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  // 3. Lead Booking Form to WhatsApp
-  const bookingForm = document.getElementById('quickBookingForm');
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+  // 5. WhatsApp Booking Forms Handling
+  const bookingForms = document.querySelectorAll('form.lead-form');
+  bookingForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('leadName').value.trim();
-      const phone = document.getElementById('leadPhone').value.trim();
-      const tour = document.getElementById('leadTour').value;
-      const date = document.getElementById('leadDate').value;
-      const guests = document.getElementById('leadGuests').value;
+      const nameInput = form.querySelector('[id*="Name"]') || form.querySelector('input[type="text"]');
+      const phoneInput = form.querySelector('[id*="Phone"]') || form.querySelector('input[type="tel"]');
+      const tourInput = form.querySelector('[id*="Tour"]') || form.querySelector('select');
+      const guestsInput = form.querySelector('[id*="Guests"]');
+      const dateInput = form.querySelector('[id*="Date"]');
+      const vehicleInput = form.querySelector('[id*="Vehicle"]');
+      const messageInput = form.querySelector('textarea');
 
-      const message = `*New Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const tour = tourInput ? tourInput.value : '';
+      const guests = guestsInput ? guestsInput.value : 'Flexible';
+      const date = dateInput ? dateInput.value : 'Flexible';
+      const vehicle = vehicleInput ? vehicleInput.value : 'Any Suitable Vehicle';
+      const userMsg = messageInput ? messageInput.value.trim() : '';
+
+      let text = `*New Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
         `👤 *Name:* ${encodeURIComponent(name)}%0A` +
         `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
-        `📍 *Package / Destination:* ${encodeURIComponent(tour)}%0A` +
-        `📅 *Travel Date:* ${encodeURIComponent(date || 'Flexible')}%0A` +
-        `👥 *Guests:* ${encodeURIComponent(guests)}%0A` +
-        `🚗 *Vehicle:* Toyota Innova 2.5 GX (RJ14 UE 1517)%0A%0A` +
-        `Please share the best quote and itinerary.`;
+        `📍 *Destination / Tour:* ${encodeURIComponent(tour)}%0A` +
+        `🚗 *Preferred Vehicle:* ${encodeURIComponent(vehicle)}%0A` +
+        `👥 *Passengers:* ${encodeURIComponent(guests)}%0A` +
+        `📅 *Travel Date:* ${encodeURIComponent(date || 'Flexible')}`;
 
-      const waUrl = `https://wa.me/918058985804?text=${message}`;
-
-      // Save lead locally
-      try {
-        const leads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
-        leads.push({ name, phone, tour, date, guests, timestamp: new Date().toISOString() });
-        localStorage.setItem('bingo_leads', JSON.stringify(leads));
-      } catch (err) {
-        console.error('Failed to save lead locally:', err);
+      if (userMsg) {
+        text += `%0A💬 *Message:* ${encodeURIComponent(userMsg)}`;
       }
 
+      text += `%0A%0APlease share quote & itinerary details.`;
+
+      const waUrl = `https://wa.me/918058985804?text=${text}`;
+
       // Open WhatsApp
-      window.open(waUrl, '_blank');
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
       alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram directly.`);
       bookingForm.reset();
     });
@@ -158,15 +242,5 @@ document.addEventListener('DOMContentLoaded', () => {
     viewRcBtn.addEventListener('click', () => {
       rcModal.classList.add('active');
     });
-  }
-  if (closeRcModal && rcModal) {
-    closeRcModal.addEventListener('click', () => {
-      rcModal.classList.remove('active');
-    });
-  }
-  if (rcModal) {
-    rcModal.addEventListener('click', (e) => {
-      if (e.target === rcModal) rcModal.classList.remove('active');
-    });
-  }
+  });
 });

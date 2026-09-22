@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tours.bingo-list.com/sitemap.xml

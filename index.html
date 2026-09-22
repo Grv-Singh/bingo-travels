@@ -23,72 +23,84 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="assets/styles.css">
 
-  <!-- Structured Data JSON-LD for Search Engines & AI Crawlers (SEO & AI EO) -->
+  <!-- Structured Data JSON-LD for AI Search Engines (Claude, ChatGPT, Gemini & Google AI) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Bingo Tour",
-    "image": "assets/images/logo_b.svg",
-    "@id": "https://tours.bingo-list.com/",
-    "url": "https://tours.bingo-list.com/",
-    "telephone": "+918058985804",
-    "priceRange": "₹₹",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "C-408, Dwarika Apartment, Muhana, Sanganer",
-      "addressLocality": "Jaipur",
-      "addressRegion": "Rajasthan",
-      "postalCode": "302029",
-      "addressCountry": "IN"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-      ],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Jyotiram",
-      "jobTitle": "Owner"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Taxi & Tour Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Jaipur Local & Rajasthan Outstation Taxi Service"
-          }
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://tours.bingo-list.com/#agency",
+        "name": "Bingo Tour",
+        "image": "assets/images/logo_b.svg",
+        "url": "https://tours.bingo-list.com/",
+        "telephone": "+918058985804",
+        "priceRange": "₹₹",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "C-408, Dwarika Apartment, Muhana, Sanganer",
+          "addressLocality": "Jaipur",
+          "addressRegion": "Rajasthan",
+          "postalCode": "302029",
+          "addressCountry": "IN"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "One-Way Cab Services (Jaipur to Delhi, Agra, Udaipur, Kota, Ajmer)"
-          }
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 26.8152,
+          "longitude": 75.7621
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Corporate Event & Conference Transport Services"
-          }
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Uttarakhand 4 Dham Yatra & Pilgrimage Tours"
-          }
+        "founder": {
+          "@type": "Person",
+          "name": "Jyotiram",
+          "jobTitle": "Owner & Lead Chauffeur",
+          "description": "Professional chauffeur with 10+ years driving experience across Rajasthan, Uttarakhand 4 Dham Himalayan routes, Uttar Pradesh, and Himachal Pradesh."
         }
-      ]
-    }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tours.bingo-list.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I book a taxi with Bingo Tour in Jaipur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can book directly by calling Owner Jyotiram at +91 80589 85804 or clicking any WhatsApp button on the website to send your travel date, passenger count, and destination for instant quote."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What vehicle options are available for outstation tours and pilgrimages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bingo Tour provides clean Swift Dzire sedans (1-4 passengers), Toyota Innova luxury MPVs (5-7 passengers), and Tempo Travellers or Buses for group travel (8 to 26+ passengers)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are one-way cab services available from Jaipur to Agra or Delhi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Bingo Tour offers fixed and per-km one-way cab transfers from Jaipur to Agra, Delhi, Udaipur, Kota, and Ajmer without return fare charges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Bingo Tour offer Uttarakhand 4 Dham Yatra packages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Bingo Tour provides experienced mountain driving services for the Uttarakhand 4 Dham Yatra covering Kedarnath, Badrinath, Gangotri, Yamunotri, Haridwar, and Rishikesh."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -97,19 +109,19 @@
   <!-- Season Offer Banner -->
   <div class="lead-offer-banner">
     <span>⚡ Season Special: Book Direct with Owner Jyotiram & Save Extra 10% on Outstation Taxis!</span>
-    <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20claim%20the%2010%25%20direct%20booking%20discount" target="_blank"><i class="fab fa-whatsapp"></i> Claim Discount</a>
+    <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20claim%20the%2010%25%20direct%20booking%20discount" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Claim Discount</a>
   </div>
 
   <!-- Top bar -->
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="top-bar-left">
-        <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" class="top-link"><i class="fas fa-map-marker-alt"></i> Sanganer, Jaipur, Rajasthan</a>
+        <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" rel="noopener noreferrer" class="top-link"><i class="fas fa-map-marker-alt"></i> Sanganer, Jaipur, Rajasthan</a>
         <span><i class="fas fa-clock"></i> 24 Hours Open Taxi Service</span>
       </div>
       <div class="top-bar-right">
         <a href="tel:+918058985804" class="top-link"><i class="fas fa-phone-alt"></i> +91 80589 85804</a>
-        <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="top-link"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
+        <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" rel="noopener noreferrer" class="top-link"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
       </div>
     </div>
   </div>
@@ -241,7 +253,7 @@
           <a href="destinations.html" class="btn-lg-gold">
             <i class="fas fa-search-location"></i> Explore Destinations
           </a>
-          <a href="https://wa.me/918058985804?text=Hello%20Jyotiram%20ji,%20I%20would%20like%20to%20inquire%20about%20a%20taxi%20booking" target="_blank" class="btn-lg-wa">
+          <a href="https://wa.me/918058985804?text=Hello%20Jyotiram%20ji,%20I%20would%20like%20to%20inquire%20about%20a%20taxi%20booking" target="_blank" rel="noopener noreferrer" class="btn-lg-wa">
             <i class="fab fa-whatsapp"></i> Instant WhatsApp Quote
           </a>
         </div>
@@ -309,8 +321,49 @@
     </div>
   </section>
 
-  <!-- Special Mentions & Services Highlight -->
+  <!-- AI-Ready Explicit FAQ Section (Citation Ready for Claude, ChatGPT & Gemini) -->
   <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">AI-Ready Knowledge & Assistance</span>
+        <h2 class="section-title">Frequently Asked Questions (FAQ)</h2>
+        <p class="section-subtitle">Clear, citation-ready answers for travelers and AI search assistants.</p>
+      </div>
+
+      <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+        <div style="background: #fff; padding: 25px; border-radius: var(--radius-md); border-left: 4px solid var(--accent); box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 8px;">How do I book a taxi with Bingo Tour in Jaipur?</h3>
+          <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+            You can book directly by calling Owner Jyotiram at <strong>+91 80589 85804</strong> or submitting any WhatsApp inquiry form on this site. Enter your date, passenger count, and destination to get an instant quote and itinerary without middlemen fees.
+          </p>
+        </div>
+
+        <div style="background: #fff; padding: 25px; border-radius: var(--radius-md); border-left: 4px solid var(--accent); box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 8px;">What cab options are available for outstation tours and pilgrimages?</h3>
+          <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+            Bingo Tour maintains a versatile fleet including clean <strong>Swift Dzire</strong> sedans (1 to 4 passengers), <strong>Toyota Innova</strong> luxury MPVs (5 to 7 passengers), and <strong>Tempo Travellers / Buses</strong> for large family or corporate groups (8 to 26+ passengers).
+          </p>
+        </div>
+
+        <div style="background: #fff; padding: 25px; border-radius: var(--radius-md); border-left: 4px solid var(--accent); box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 8px;">Are one-way taxi drops available from Jaipur to Agra or Delhi?</h3>
+          <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+            Yes. One-way cab services are available from Jaipur to Agra, Delhi, Udaipur, Kota, and Ajmer at transparent per-kilometer or fixed rates without return fare charges.
+          </p>
+        </div>
+
+        <div style="background: #fff; padding: 25px; border-radius: var(--radius-md); border-left: 4px solid var(--accent); box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: 8px;">Does Bingo Tour provide mountain driving for Uttarakhand 4 Dham Yatra?</h3>
+          <p style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
+            Yes. Owner Jyotiram has 10+ years of mountain chauffeuring experience covering Kedarnath, Badrinath, Gangotri, Yamunotri, Haridwar, and Rishikesh with senior devotee care and luggage safety.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Mentions & Services Highlight -->
+  <section class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Versatile Travel Services</span>
@@ -423,7 +476,7 @@
 
   <!-- Floating Action Buttons -->
   <div class="floating-actions">
-    <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="float-btn float-wa" title="WhatsApp Us">
+    <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" rel="noopener noreferrer" class="float-btn float-wa" title="WhatsApp Us">
       <i class="fab fa-whatsapp"></i>
       <span class="float-btn-text">WhatsApp</span>
     </a>
@@ -436,7 +489,7 @@
   <!-- Sticky Mobile Lead Bar for High Conversions -->
   <div class="sticky-mobile-lead-bar">
     <div class="mobile-lead-btn-group">
-      <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20an%20instant%20taxi%20quote" target="_blank" class="btn-mobile-lead-wa">
+      <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20an%20instant%20taxi%20quote" target="_blank" rel="noopener noreferrer" class="btn-mobile-lead-wa">
         <i class="fab fa-whatsapp"></i> WhatsApp Quote
       </a>
       <a href="tel:+918058985804" class="btn-mobile-lead-call">

@@ -1163,8 +1163,7 @@ footer {
     display: block;
   }
   .floating-actions {
-    bottom: 75px;
-    right: 15px;
+    display: none;
   }
 }
 

@@ -1,20 +1,40 @@
 // Bingo Tour & Travels Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Burger Navigation Menu Toggle
-  const burgerToggle = document.getElementById('burgerToggle');
-  const navMenu = document.getElementById('navMenu');
+  // Clean up any legacy sensitive lead data stored in LocalStorage
+  try {
+    localStorage.removeItem('bingo_leads');
+  } catch (err) {}
 
-  if (burgerToggle && navMenu) {
-    burgerToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      const icon = burgerToggle.querySelector('i');
-      if (icon) {
-        if (navMenu.classList.contains('active')) {
-          icon.className = 'fas fa-times';
-        } else {
-          icon.className = 'fas fa-bars';
-        }
+  // 1. Car 360 Turntable Logic
+  const carImg = document.getElementById('carDisplayImg');
+  const angleBtns = document.querySelectorAll('.angle-btn');
+  const autoRotateBtn = document.getElementById('autoRotateBtn');
+
+  const angles = [
+    { name: 'front', src: 'assets/images/car_front.png', label: 'Front View' },
+    { name: 'right', src: 'assets/images/car_right.png', label: 'Right Profile' },
+    { name: 'rear', src: 'assets/images/car_rear.png', label: 'Rear View' },
+    { name: 'left', src: 'assets/images/car_left.png', label: 'Left Profile' }
+  ];
+
+  let currentAngleIdx = 0;
+  let autoRotateInterval = null;
+
+  function setCarAngle(index) {
+    currentAngleIdx = (index + angles.length) % angles.length;
+    carImg.style.opacity = '0';
+    setTimeout(() => {
+      carImg.src = angles[currentAngleIdx].src;
+      carImg.alt = angles[currentAngleIdx].label;
+      carImg.style.opacity = '1';
+    }, 150);
+
+    angleBtns.forEach((btn, idx) => {
+      if (idx === currentAngleIdx) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
       }
     });
 
@@ -206,16 +226,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const waUrl = `https://wa.me/918058985804?text=${text}`;
 
-      // Save lead locally
-      try {
-        const leads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
-        leads.push({ name, phone, tour, date, guests, vehicle, timestamp: new Date().toISOString() });
-        localStorage.setItem('bingo_leads', JSON.stringify(leads));
-      } catch (err) {}
+      // Open WhatsApp
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram directly.`);
+      bookingForm.reset();
+    });
+  }
 
-      window.open(waUrl, '_blank');
-      alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram (Owner) directly.`);
-      form.reset();
+  // 4. Modal for RC Verification
+  const rcModal = document.getElementById('rcModal');
+  const viewRcBtn = document.getElementById('viewRcBtn');
+  const closeRcModal = document.getElementById('closeRcModal');
+
+  if (viewRcBtn && rcModal) {
+    viewRcBtn.addEventListener('click', () => {
+      rcModal.classList.add('active');
     });
   });
 });

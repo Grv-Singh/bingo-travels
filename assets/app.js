@@ -86,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
           if (filter === 'all') {
             renderGallery(data);
           } else {
-            const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
+            const lowerFilter = filter.toLowerCase();
+            const filtered = data.filter(item => item.category.toLowerCase().includes(lowerFilter));
             renderGallery(filtered);
           }
         });

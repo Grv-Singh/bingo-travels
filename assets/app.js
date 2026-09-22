@@ -129,23 +129,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryGrid = document.getElementById('galleryGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
-  fetch('assets/tours_data.json')
-    .then(res => res.json())
-    .then(data => {
-      renderGallery(data);
+  if (galleryGrid) {
+    fetch('assets/tours_data.json')
+      .then(res => res.json())
+      .then(data => {
+        renderGallery(data);
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const filter = btn.getAttribute('data-filter');
-          if (filter === 'all') {
-            renderGallery(data);
-          } else {
-            const lowerFilter = filter.toLowerCase();
-            const filtered = data.filter(item => item.category.toLowerCase().includes(lowerFilter));
-            renderGallery(filtered);
-          }
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            if (filter === 'all') {
+              renderGallery(data);
+            } else {
+              const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
+              renderGallery(filtered);
+            }
+          });
         });
       })
       .catch(err => console.error('Gallery load error:', err));

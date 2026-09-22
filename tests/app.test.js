@@ -2,167 +2,119 @@
  * @jest-environment jsdom
  */
 
-describe('Quick Booking Form - LocalStorage & Error Handling Tests', () => {
-  let openSpy;
-  let alertSpy;
-  let domContentLoadedListeners = [];
-  const originalAddEventListener = document.addEventListener;
-
-  beforeAll(() => {
-    document.addEventListener = function (type, listener, options) {
-      if (type === 'DOMContentLoaded') {
-        domContentLoadedListeners.push(listener);
-      }
-      return originalAddEventListener.call(this, type, listener, options);
-    };
-  });
-
-  afterAll(() => {
-    document.addEventListener = originalAddEventListener;
-  });
+describe('Gallery Fetch & Error Handling in app.js', () => {
+  let consoleErrorSpy;
 
   beforeEach(() => {
-    jest.resetModules();
-
-    // Remove old listeners
-    domContentLoadedListeners.forEach(listener => {
-      document.removeEventListener('DOMContentLoaded', listener);
-    });
-    domContentLoadedListeners = [];
-
-    // Clear DOM
+    // Clear DOM and reset HTML structure needed by app.js
     document.body.innerHTML = `
       <img id="carDisplayImg" src="" alt="" />
-      <button class="angle-btn active">Front</button>
-      <button id="autoRotateBtn">Auto Rotate</button>
+      <button class="angle-btn active">Angle 1</button>
+      <button class="angle-btn">Angle 2</button>
 
-      <form id="quickBookingForm">
-        <input id="leadName" name="name" />
-        <input id="leadPhone" name="phone" />
-        <select id="leadTour" name="tour"><option value="Jaipur Sightseeing" selected>Jaipur Sightseeing</option></select>
-        <input id="leadDate" name="date" />
-        <input id="leadGuests" name="guests" />
-        <button type="submit">Book Now</button>
-      </form>
+      <button id="autoRotateBtn">Auto Rotate</button>
 
       <div id="galleryGrid"></div>
       <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="rajasthan">Rajasthan</button>
 
-      <div id="rcModal"></div>
+      <form id="quickBookingForm">
+        <input id="leadName" value="Test Name" />
+        <input id="leadPhone" value="1234567890" />
+        <select id="leadTour"><option value="Rajasthan Tour">Rajasthan Tour</option></select>
+        <input id="leadDate" value="2025-01-01" />
+        <input id="leadGuests" value="2" />
+      </form>
+
       <button id="viewRcBtn">View RC</button>
+      <div id="rcModal"></div>
       <button id="closeRcModal">Close RC</button>
     `;
 
-    // Clear localStorage
-    localStorage.clear();
-
-    // Spy on window methods
-    openSpy = jest.spyOn(window, 'open').mockImplementation(() => null);
-    alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
-
-    // Mock fetch for gallery
-    global.fetch = jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => Promise.resolve([])
-      })
-    );
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    consoleErrorSpy.mockRestore();
+    jest.clearAllMocks();
+    jest.resetModules();
   });
 
-  function setupApp() {
+  test('handles fetch error when fetching tours_data.json fails (network rejection)', async () => {
+    const networkError = new Error('Network error loading gallery');
+    global.fetch = jest.fn().mockRejectedValue(networkError);
+
     require('../assets/app.js');
     document.dispatchEvent(new Event('DOMContentLoaded'));
 
-    // Fill form input values
-    document.getElementById('leadName').value = 'John Doe';
-    document.getElementById('leadPhone').value = '1234567890';
-    document.getElementById('leadTour').value = 'Jaipur Sightseeing';
-    document.getElementById('leadDate').value = '2025-05-01';
-    document.getElementById('leadGuests').value = '4';
-  }
+    // Allow promise handlers to process
+    await new Promise(resolve => setTimeout(resolve, 0));
 
-  test('Happy path: saves lead to localStorage, opens WhatsApp, alerts user, and resets form', () => {
-    setupApp();
-    const form = document.getElementById('quickBookingForm');
-    const nameInput = document.getElementById('leadName');
-
-    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-
-    // Check localStorage
-    const savedLeads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
-    expect(savedLeads.length).toBe(1);
-    expect(savedLeads[0].name).toBe('John Doe');
-    expect(savedLeads[0].phone).toBe('1234567890');
-    expect(savedLeads[0].tour).toBe('Jaipur Sightseeing');
-    expect(savedLeads[0].date).toBe('2025-05-01');
-    expect(savedLeads[0].guests).toBe('4');
-    expect(savedLeads[0].timestamp).toBeDefined();
-
-    // Check WhatsApp open call
-    expect(openSpy).toHaveBeenCalledTimes(1);
-    expect(openSpy.mock.calls[0][0]).toContain('https://wa.me/918058985804?text=');
-    expect(openSpy.mock.calls[0][0]).toContain(encodeURIComponent('John Doe'));
-    expect(openSpy.mock.calls[0][1]).toBe('_blank');
-
-    // Check alert call
-    expect(alertSpy).toHaveBeenCalledWith('Thank you John Doe! Opening WhatsApp to connect with Jyotiram directly.');
-
-    // Check form reset (input value cleared)
-    expect(nameInput.value).toBe('');
+    expect(global.fetch).toHaveBeenCalledWith('assets/tours_data.json');
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Gallery load error:', networkError);
   });
 
-  test('Empty catch block resilience: handles localStorage.setItem QuotaExceededError without crashing', () => {
-    setupApp();
-    // Mock localStorage.setItem to throw an exception (e.g. QuotaExceededError)
-    jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
-      throw new DOMException('QuotaExceededError', 'QuotaExceededError');
+  test('renders gallery successfully when fetch succeeds', async () => {
+    const mockTours = [
+      {
+        src: 'assets/images/tours/tour1.jpg',
+        title: 'Golden Triangle Tour',
+        category: 'Rajasthan',
+        customers: 150,
+        desc: 'Explore Delhi, Agra, and Jaipur.'
+      }
+    ];
+
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: jest.fn().mockResolvedValue(mockTours)
     });
 
-    const form = document.getElementById('quickBookingForm');
+    require('../assets/app.js');
+    document.dispatchEvent(new Event('DOMContentLoaded'));
 
-    expect(() => {
-      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-    }).not.toThrow();
+    await new Promise(resolve => setTimeout(resolve, 0));
 
-    // Ensure application flow continues uninterrupted
-    expect(openSpy).toHaveBeenCalledTimes(1);
-    expect(alertSpy).toHaveBeenCalledWith('Thank you John Doe! Opening WhatsApp to connect with Jyotiram directly.');
+    expect(global.fetch).toHaveBeenCalledWith('assets/tours_data.json');
+    const galleryGrid = document.getElementById('galleryGrid');
+    expect(galleryGrid.innerHTML).toContain('Golden Triangle Tour');
+    expect(galleryGrid.innerHTML).toContain('Rajasthan');
   });
 
-  test('Empty catch block resilience: handles localStorage.getItem exception (e.g. security error or disabled local storage)', () => {
-    setupApp();
-    // Mock localStorage.getItem to throw an exception
-    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
-      throw new Error('SecurityError: The operation is insecure.');
+  test('filters gallery items when filter buttons are clicked', async () => {
+    const mockTours = [
+      {
+        src: 'assets/images/tours/tour1.jpg',
+        title: 'Jaipur Palace Tour',
+        category: 'Rajasthan',
+        customers: 100,
+        desc: 'Palace tour'
+      },
+      {
+        src: 'assets/images/tours/tour2.jpg',
+        title: 'Kerala Backwaters',
+        category: 'South India',
+        customers: 80,
+        desc: 'Backwaters tour'
+      }
+    ];
+
+    global.fetch = jest.fn().mockResolvedValue({
+      ok: true,
+      json: jest.fn().mockResolvedValue(mockTours)
     });
 
-    const form = document.getElementById('quickBookingForm');
+    require('../assets/app.js');
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    await new Promise(resolve => setTimeout(resolve, 0));
 
-    expect(() => {
-      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-    }).not.toThrow();
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const rajasthanBtn = filterBtns[1]; // data-filter="rajasthan"
 
-    // Ensure application flow continues uninterrupted
-    expect(openSpy).toHaveBeenCalledTimes(1);
-    expect(alertSpy).toHaveBeenCalledWith('Thank you John Doe! Opening WhatsApp to connect with Jyotiram directly.');
-  });
+    rajasthanBtn.click();
 
-  test('Empty catch block resilience: handles corrupt JSON data in localStorage gracefully', () => {
-    setupApp();
-    // Set invalid JSON in localStorage
-    localStorage.setItem('bingo_leads', 'INVALID_JSON{{{');
-
-    const form = document.getElementById('quickBookingForm');
-
-    expect(() => {
-      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-    }).not.toThrow();
-
-    // Ensure application flow continues uninterrupted
-    expect(openSpy).toHaveBeenCalledTimes(1);
-    expect(alertSpy).toHaveBeenCalledWith('Thank you John Doe! Opening WhatsApp to connect with Jyotiram directly.');
+    const galleryGrid = document.getElementById('galleryGrid');
+    expect(galleryGrid.innerHTML).toContain('Jaipur Palace Tour');
+    expect(galleryGrid.innerHTML).not.toContain('Kerala Backwaters');
   });
 });

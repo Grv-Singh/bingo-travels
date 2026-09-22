@@ -1,6 +1,11 @@
 // Bingo Tour & Travels Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Clean up any legacy sensitive lead data stored in LocalStorage
+  try {
+    localStorage.removeItem('bingo_leads');
+  } catch (err) {}
+
   // 1. Car 360 Turntable Logic
   const carImg = document.getElementById('carDisplayImg');
   const angleBtns = document.querySelectorAll('.angle-btn');
@@ -133,13 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `Please share the best quote and itinerary.`;
 
       const waUrl = `https://wa.me/918058985804?text=${message}`;
-
-      // Save lead locally
-      try {
-        const leads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
-        leads.push({ name, phone, tour, date, guests, timestamp: new Date().toISOString() });
-        localStorage.setItem('bingo_leads', JSON.stringify(leads));
-      } catch (err) {}
 
       // Open WhatsApp
       window.open(waUrl, '_blank', 'noopener,noreferrer');

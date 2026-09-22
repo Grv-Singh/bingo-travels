@@ -1,4 +1,4 @@
-// Bingo Tour & Travels Interactive Scripts
+// Bingo Tour Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Mobile Burger Navigation Menu Toggle
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const vehicle = vehicleInput ? vehicleInput.value : 'Any Suitable Vehicle';
       const userMsg = messageInput ? messageInput.value.trim() : '';
 
-      let text = `*New Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
+      let text = `*New Booking Inquiry - Bingo Tour*%0A%0A` +
         `👤 *Name:* ${encodeURIComponent(name)}%0A` +
         `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
         `📍 *Destination / Tour:* ${encodeURIComponent(tour)}%0A` +

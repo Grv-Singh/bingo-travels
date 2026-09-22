@@ -1,13 +1,16 @@
 {
-  "name": "bingo-tour-travels",
+  "name": "bingo-travels",
   "version": "1.0.0",
-  "description": "Bingo Tour & Travels interactive web application",
+  "description": "",
   "main": "assets/app.js",
   "scripts": {
     "test": "jest"
   },
   "devDependencies": {
-    "jest": "^30.5.2",
-    "jest-environment-jsdom": "^30.5.2"
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }

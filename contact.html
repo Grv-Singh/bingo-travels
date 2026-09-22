@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Taxi Booking Inquiry | Bingo Tour & Travels Jaipur</title>
+  <meta name="description" content="Make an inquiry or book a taxi with Bingo Tour & Travels Jaipur. Direct WhatsApp booking with Owner Jyotiram. Send details like name, mobile number, passengers, and destination.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" class="top-link"><i class="fas fa-map-marker-alt"></i> Sanganer, Jaipur, Rajasthan</a>
+        <span><i class="fas fa-clock"></i> 24 Hours Open Taxi Service</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:+918058985804" class="top-link"><i class="fas fa-phone-alt"></i> +91 80589 85804</a>
+        <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="top-link"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/images/logo_ganesh.png" alt="Bingo Tour & Travels Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1>BINGO TOUR & TRAVELS</h1>
+          <span>Trusted Taxi & Cab Service in Jaipur</span>
+        </div>
+      </a>
+
+      <button class="burger-toggle" id="burgerToggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="vehicles.html" class="nav-link">Vehicle Options</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery & Slider</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="contact.html" class="nav-link active">Contact & Inquiry</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <span class="section-tag">Direct Owner Communication</span>
+      <h2>Contact Us & WhatsApp Inquiry</h2>
+      <p>Submit your inquiry form below. Details like your name, mobile number, passenger count, preferred destination, and travel date will automatically format into WhatsApp to connect directly with Owner Jyotiram.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start;">
+
+        <!-- Contact Form -->
+        <div style="background: #fff; border-radius: var(--radius-lg); padding: 35px; box-shadow: var(--shadow-md); border: 2px solid var(--accent);">
+          <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 6px; font-weight: 700;">Inquiry & Booking Form</h3>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 24px;">Fill out your trip details to send an instant inquiry to WhatsApp.</p>
+
+          <form class="lead-form">
+            <div class="form-group">
+              <label for="contactName"><i class="fas fa-user"></i> Full Name *</label>
+              <input type="text" id="contactName" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactPhone"><i class="fas fa-phone"></i> Mobile / WhatsApp Number *</label>
+                <input type="tel" id="contactPhone" placeholder="e.g. 98765 43210" required>
+              </div>
+              <div class="form-group">
+                <label for="contactGuests"><i class="fas fa-users"></i> Number of People *</label>
+                <select id="contactGuests" required>
+                  <option value="1 to 4 People">1 to 4 People (Sedan / Swift Dzire)</option>
+                  <option value="5 to 7 People">5 to 7 People (Toyota Innova MPV)</option>
+                  <option value="8 to 15 People">8 to 15 People (Tempo Traveller)</option>
+                  <option value="16+ People">16+ People (Bus / Group Transport)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactTour"><i class="fas fa-map-marked-alt"></i> Destination / Route *</label>
+              <input type="text" id="contactTour" placeholder="e.g. Kedarnath Dham, Mathura, Shimla, Jaipur to Delhi One-Way..." required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactVehicle"><i class="fas fa-car"></i> Preferred Vehicle</label>
+                <select id="contactVehicle">
+                  <option value="Swift Dzire">Swift Dzire (Sedan)</option>
+                  <option value="Toyota Innova">Toyota Innova (Luxury MPV)</option>
+                  <option value="Bus / Tempo Traveller">Bus / Tempo Traveller</option>
+                  <option value="Suggest Best Option">Suggest Best Vehicle Option</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactDate"><i class="fas fa-calendar-alt"></i> Expected Travel Date</label>
+                <input type="date" id="contactDate">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMsg"><i class="fas fa-comment"></i> Special Requirements / Questions</label>
+              <textarea id="contactMsg" rows="3" placeholder="Tell us about special stops, corporate event requirements, luggage details..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-lead">
+              <i class="fab fa-whatsapp" style="font-size: 1.2rem; color: #25d366;"></i> Send Inquiry to WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info Card -->
+        <div style="background: var(--primary); color: #fff; border-radius: var(--radius-lg); padding: 35px; border: 1px solid rgba(212,175,55,0.3);">
+          <h3 style="color: var(--accent); font-size: 1.5rem; margin-bottom: 20px; font-family: 'Playfair Display', serif;">Bingo Tour & Travels Office</h3>
+
+          <div class="footer-contact-item" style="font-size: 1.05rem; margin-bottom: 20px;">
+            <i class="fas fa-user-circle" style="font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: #fff; display: block;">Proprietor & Owner:</strong>
+              <span>Jyotiram</span>
+            </div>
+          </div>
+
+          <div class="footer-contact-item" style="font-size: 1.05rem; margin-bottom: 20px;">
+            <i class="fas fa-phone-alt" style="font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: #fff; display: block;">Call Directly 24/7:</strong>
+              <a href="tel:+918058985804" style="color: #fff; text-decoration: none;">+91 80589 85804</a>
+            </div>
+          </div>
+
+          <div class="footer-contact-item" style="font-size: 1.05rem; margin-bottom: 20px;">
+            <i class="fab fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: #fff; display: block;">WhatsApp Business:</strong>
+              <a href="https://wa.me/918058985804" target="_blank" style="color: #25d366; text-decoration: none;">+91 80589 85804 (Chat Now)</a>
+            </div>
+          </div>
+
+          <div class="footer-contact-item" style="font-size: 1.05rem; margin-bottom: 20px;">
+            <i class="fas fa-map-marker-alt" style="font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: #fff; display: block;">Office Address:</strong>
+              <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" style="color: #cbd5e1; text-decoration: underline;">C-408 Dwarika Apartment, Muhana, Sanganer, Jaipur, Rajasthan - 302029 <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-contact-item" style="font-size: 1.05rem; margin-bottom: 25px;">
+            <i class="fas fa-clock" style="font-size: 1.2rem;"></i>
+            <div>
+              <strong style="color: #fff; display: block;">Operating Hours:</strong>
+              <span>Open 24 Hours / 7 Days a Week</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.06); padding: 20px; border-radius: var(--radius-sm); border-left: 3px solid var(--accent);">
+            <h4 style="color: var(--accent); font-size: 1rem; margin-bottom: 6px;">Special Mentions:</h4>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5;">
+              • One-way cabs from Jaipur to Agra, Delhi, Udaipur, Kota, and Ajmer available.<br>
+              • Dedicated corporate event & conference attendee services.<br>
+              • Taxi options (Dzire, Innova, Tempo Traveller) for all routes.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>Bingo Tour & Travels</h4>
+        <p>Reliable taxi & cab services in Jaipur, Rajasthan. Specializing in outstation roadtrips, 4 Dham Yatras, corporate events, one-way transfers, and 24/7 airport drops.</p>
+        <p style="font-size: 0.8rem; color: #64748b;">Managed by Owner Jyotiram</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="destinations.html">Destinations by State</a></li>
+          <li><a href="vehicles.html">Vehicle Options</a></li>
+          <li><a href="gallery.html">Photo Gallery & Slider</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact & WhatsApp Inquiry</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Popular States</h4>
+        <ul class="footer-links">
+          <li><a href="destinations.html">Uttarakhand (4 Dham Yatra)</a></li>
+          <li><a href="destinations.html">Uttar Pradesh (Mathura, Ayodhya)</a></li>
+          <li><a href="destinations.html">Himachal (Shimla, Manali)</a></li>
+          <li><a href="destinations.html">Rajasthan (Jaipur, Udaipur, Jaisalmer)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Owner</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-user-circle"></i>
+          <span>Jyotiram (Owner)</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>+91 80589 85804</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>+91 80589 85804</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Bingo Tour & Travels. All Rights Reserved. Managed by Owner Jyotiram.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="float-btn float-wa" title="WhatsApp Us">
+      <i class="fab fa-whatsapp"></i>
+      <span class="float-btn-text">WhatsApp</span>
+    </a>
+    <a href="tel:+918058985804" class="float-btn float-call" title="Call Now">
+      <i class="fas fa-phone-alt"></i>
+      <span class="float-btn-text">Call Now</span>
+    </a>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

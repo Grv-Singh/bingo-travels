@@ -94,21 +94,66 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error('Gallery load error:', err));
 
+  function sanitizeUrl(url) {
+    if (!url) return '';
+    const trimmed = String(url).trim();
+    if (/^(javascript|data|vbscript):/i.test(trimmed)) {
+      return '#';
+    }
+    return trimmed;
+  }
+
   function renderGallery(items) {
     if (!galleryGrid) return;
-    galleryGrid.innerHTML = items.map(item => `
-      <div class="gallery-card">
-        <div class="gallery-img-container">
-          <img src="${item.src}" alt="${item.title}" loading="lazy">
-          <span class="gallery-card-badge">${item.category}</span>
-          <span class="gallery-card-cust"><i class="fas fa-user-friends"></i> ${item.customers} Guests</span>
-        </div>
-        <div class="gallery-info">
-          <h4>${item.title}</h4>
-          <p>${item.desc}</p>
-        </div>
-      </div>
-    `).join('');
+    galleryGrid.textContent = '';
+
+    const fragment = document.createDocumentFragment();
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'gallery-img-container';
+
+      const img = document.createElement('img');
+      img.src = sanitizeUrl(item.src);
+      img.alt = item.title || '';
+      img.setAttribute('loading', 'lazy');
+
+      const badge = document.createElement('span');
+      badge.className = 'gallery-card-badge';
+      badge.textContent = item.category || '';
+
+      const cust = document.createElement('span');
+      cust.className = 'gallery-card-cust';
+      const icon = document.createElement('i');
+      icon.className = 'fas fa-user-friends';
+      cust.appendChild(icon);
+      cust.appendChild(document.createTextNode(` ${item.customers} Guests`));
+
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(badge);
+      imgContainer.appendChild(cust);
+
+      const info = document.createElement('div');
+      info.className = 'gallery-info';
+
+      const h4 = document.createElement('h4');
+      h4.textContent = item.title || '';
+
+      const p = document.createElement('p');
+      p.textContent = item.desc || '';
+
+      info.appendChild(h4);
+      info.appendChild(p);
+
+      card.appendChild(imgContainer);
+      card.appendChild(info);
+
+      fragment.appendChild(card);
+    });
+
+    galleryGrid.appendChild(fragment);
   }
 
   // 3. Lead Booking Form to WhatsApp

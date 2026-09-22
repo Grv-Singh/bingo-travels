@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {}
 
       // Open WhatsApp
-      window.open(waUrl, '_blank');
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
       alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram directly.`);
       bookingForm.reset();
     });

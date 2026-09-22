@@ -91,37 +91,37 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
   }
 
-  // 3. Destinations Search Feature
+  // 3. Destinations Search Feature (Fixed Robust Search)
   const destSearchInput = document.getElementById('destSearchInput');
   if (destSearchInput) {
-    destSearchInput.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase().trim();
-      const destCards = document.querySelectorAll('.dest-card');
-      const stateBlocks = document.querySelectorAll('.state-block');
+    destSearchInput.addEventListener('keyup', handleDestSearch);
+    destSearchInput.addEventListener('input', handleDestSearch);
+  }
+
+  function handleDestSearch(e) {
+    const query = e.target.value.toLowerCase().trim();
+    const stateBlocks = document.querySelectorAll('.state-block');
+
+    stateBlocks.forEach(block => {
+      const destCards = block.querySelectorAll('.dest-card');
+      const stateTitleText = block.querySelector('.state-title-bar')?.textContent.toLowerCase() || '';
+      let visibleCardCount = 0;
 
       destCards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (text.includes(query)) {
+        const cardText = card.textContent.toLowerCase();
+        if (query === '' || cardText.includes(query) || stateTitleText.includes(query)) {
           card.style.display = 'flex';
+          visibleCardCount++;
         } else {
           card.style.display = 'none';
         }
       });
 
-      // Show/hide state blocks based on whether any card inside is visible
-      stateBlocks.forEach(block => {
-        const visibleCards = block.querySelectorAll('.dest-card[style="display: flex;"]');
-        const stateTitle = block.querySelector('.state-title-bar').textContent.toLowerCase();
-        if (visibleCards.length > 0 || stateTitle.includes(query) || query === '') {
-          block.style.display = 'block';
-          if (stateTitle.includes(query)) {
-            // Show all cards in this state if state matches
-            block.querySelectorAll('.dest-card').forEach(c => c.style.display = 'flex');
-          }
-        } else {
-          block.style.display = 'none';
-        }
-      });
+      if (query === '' || visibleCardCount > 0) {
+        block.style.display = 'block';
+      } else {
+        block.style.display = 'none';
+      }
     });
   }
 
@@ -206,14 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const waUrl = `https://wa.me/918058985804?text=${text}`;
 
-      // Save lead locally
-      try {
-        const leads = JSON.parse(localStorage.getItem('bingo_leads') || '[]');
-        leads.push({ name, phone, tour, date, guests, vehicle, timestamp: new Date().toISOString() });
-        localStorage.setItem('bingo_leads', JSON.stringify(leads));
-      } catch (err) {}
-
-      window.open(waUrl, '_blank');
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
       alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram (Owner) directly.`);
       form.reset();
     });

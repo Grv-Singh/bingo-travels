@@ -775,12 +775,17 @@ body {
   color: var(--accent);
 }
 
-/* Trusted Partner Layout Fix */
+/* Trusted Partner Layout - Stacked Vertically on Mobile */
 .trusted-partner-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+@media (min-width: 860px) {
+  .trusted-partner-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
 }
 .trusted-box-1, .trusted-box-2 {
   background: rgba(255,255,255,0.05);

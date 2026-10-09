@@ -15,11 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navMenu.classList.toggle('active');
       const icon = burgerToggle.querySelector('i');
       if (icon) {
-        if (navMenu.classList.contains('active')) {
-          icon.className = 'fas fa-times';
-        } else {
-          icon.className = 'fas fa-bars';
-        }
+        icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
       }
     });
 
@@ -32,69 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Car 360 Turntable Logic
-  const carImg = document.getElementById('carDisplayImg');
-  const angleBtns = document.querySelectorAll('.angle-btn');
-  const autoRotateBtn = document.getElementById('autoRotateBtn');
-
-  const angles = [
-    { name: 'front', src: 'assets/images/car_front.png', label: 'Front View' },
-    { name: 'right', src: 'assets/images/car_right.png', label: 'Right Profile' },
-    { name: 'rear', src: 'assets/images/car_rear.png', label: 'Rear View' },
-    { name: 'left', src: 'assets/images/car_left.png', label: 'Left Profile' }
-  ];
-
-  let currentAngleIdx = 0;
-  let autoRotateInterval = null;
-
-  function setCarAngle(index) {
-    if (!carImg) return;
-    currentAngleIdx = (index + angles.length) % angles.length;
-    carImg.style.opacity = '0';
-    setTimeout(() => {
-      carImg.src = angles[currentAngleIdx].src;
-      carImg.alt = angles[currentAngleIdx].label;
-      carImg.style.opacity = '1';
-    }, 150);
-
-    angleBtns.forEach((btn, idx) => {
-      if (idx === currentAngleIdx) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-  }
-
-  if (angleBtns.length > 0) {
-    angleBtns.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        if (autoRotateInterval) {
-          clearInterval(autoRotateInterval);
-          autoRotateInterval = null;
-          if (autoRotateBtn) autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto-Rotate 360°';
-        }
-        setCarAngle(idx);
-      });
-    });
-  }
-
-  if (autoRotateBtn) {
-    autoRotateBtn.addEventListener('click', () => {
-      if (autoRotateInterval) {
-        clearInterval(autoRotateInterval);
-        autoRotateInterval = null;
-        autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto-Rotate 360°';
-      } else {
-        autoRotateInterval = setInterval(() => {
-          setCarAngle(currentAngleIdx + 1);
-        }, 1800);
-        autoRotateBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Rotation';
-      }
-    });
-  }
-
-  // 3. Photo Slider Logic (Hero / Photo Showcase)
+  // 2. Photo Slider Logic (Hero Showcase with Pill Overlay)
   const slideItems = document.querySelectorAll('.slide-item');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.getElementById('sliderPrev');
@@ -107,25 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSlide(index) {
       currentSlide = (index + slideItems.length) % slideItems.length;
       slideItems.forEach((item, idx) => {
-        if (idx === currentSlide) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
+        item.classList.toggle('active', idx === currentSlide);
       });
       dots.forEach((dot, idx) => {
-        if (idx === currentSlide) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
+        dot.classList.toggle('active', idx === currentSlide);
       });
     }
 
     function startAutoSlide() {
       slideInterval = setInterval(() => {
         showSlide(currentSlide + 1);
-      }, 4000);
+      }, 4500);
     }
 
     function resetAutoSlide() {
@@ -157,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
   }
 
-  // 4. Destinations Search Feature
+  // 3. Destinations Search Feature (Keyword, Gate, Dwar, Murti & Attractions)
   const destSearchInput = document.getElementById('destSearchInput');
   if (destSearchInput) {
     destSearchInput.addEventListener('input', (e) => {
@@ -167,20 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       destCards.forEach(card => {
         const text = card.textContent.toLowerCase();
-        if (text.includes(query)) {
+        if (text.includes(query) || query === '') {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
 
-      // Show/hide state blocks based on whether any card inside is visible
       stateBlocks.forEach(block => {
         const visibleCards = block.querySelectorAll('.dest-card[style="display: flex;"]');
-        const stateTitle = block.querySelector('.state-title-bar').textContent.toLowerCase();
+        const stateTitle = block.querySelector('.state-title-bar')?.textContent.toLowerCase() || '';
         if (visibleCards.length > 0 || stateTitle.includes(query) || query === '') {
           block.style.display = 'block';
-          if (stateTitle.includes(query)) {
+          if (stateTitle.includes(query) && query !== '') {
             block.querySelectorAll('.dest-card').forEach(c => c.style.display = 'flex');
           }
         } else {
@@ -190,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Tour Gallery Dynamic Filter & Load
+  // 4. Tour Gallery Dynamic Filter & Load
   const galleryGrid = document.getElementById('galleryGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -279,32 +204,32 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error('Gallery load error:', err));
   }
 
-  // 6. WhatsApp Booking Forms Handling
+  // 5. WhatsApp Booking Forms Handling
   const bookingForms = document.querySelectorAll('form.lead-form, form#quickBookingForm');
   bookingForms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const nameInput = form.querySelector('[id*="Name"]') || form.querySelector('input[type="text"]');
       const phoneInput = form.querySelector('[id*="Phone"]') || form.querySelector('input[type="tel"]');
-      const tourInput = form.querySelector('[id*="Tour"]') || form.querySelector('select');
+      const tourInput = form.querySelector('[id*="Tour"]') || form.querySelector('select[name="tour"]');
+      const vehicleInput = form.querySelector('[id*="Vehicle"]') || form.querySelector('select[name="vehicle"]');
       const guestsInput = form.querySelector('[id*="Guests"]');
       const dateInput = form.querySelector('[id*="Date"]');
-      const vehicleInput = form.querySelector('[id*="Vehicle"]');
       const messageInput = form.querySelector('textarea');
 
       const name = nameInput ? nameInput.value.trim() : '';
       const phone = phoneInput ? phoneInput.value.trim() : '';
-      const tour = tourInput ? tourInput.value : '';
+      const tour = tourInput ? tourInput.value : 'General Inquiry';
+      const vehicle = vehicleInput ? vehicleInput.value : 'Any Suitable Vehicle';
       const guests = guestsInput ? guestsInput.value : 'Flexible';
       const date = dateInput ? dateInput.value : 'Flexible';
-      const vehicle = vehicleInput ? vehicleInput.value : 'Any Suitable Vehicle';
       const userMsg = messageInput ? messageInput.value.trim() : '';
 
       let text = `*New Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
         `👤 *Name:* ${encodeURIComponent(name)}%0A` +
         `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
-        `📍 *Destination / Tour:* ${encodeURIComponent(tour)}%0A` +
-        `🚗 *Preferred Vehicle:* ${encodeURIComponent(vehicle)}%0A` +
+        `📍 *Destination / Service:* ${encodeURIComponent(tour)}%0A` +
+        `🚗 *Vehicle Preferred:* ${encodeURIComponent(vehicle)}%0A` +
         `👥 *Passengers:* ${encodeURIComponent(guests)}%0A` +
         `📅 *Travel Date:* ${encodeURIComponent(date || 'Flexible')}`;
 
@@ -316,35 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const waUrl = `https://wa.me/918058985804?text=${text}`;
 
-      // Open WhatsApp
       window.open(waUrl, '_blank', 'noopener,noreferrer');
-      alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram directly.`);
+      alert(`Thank you ${name}! Opening WhatsApp to connect directly with Owner Jyotiram.`);
       form.reset();
     });
   });
-
-  // 7. Modal for RC Verification
-  const rcModal = document.getElementById('rcModal');
-  const viewRcBtn = document.getElementById('viewRcBtn');
-  const closeRcModal = document.getElementById('closeRcModal');
-
-  if (viewRcBtn && rcModal) {
-    viewRcBtn.addEventListener('click', () => {
-      rcModal.classList.add('active');
-    });
-  }
-
-  if (closeRcModal && rcModal) {
-    closeRcModal.addEventListener('click', () => {
-      rcModal.classList.remove('active');
-    });
-  }
-
-  if (rcModal) {
-    rcModal.addEventListener('click', (e) => {
-      if (e.target === rcModal) {
-        rcModal.classList.remove('active');
-      }
-    });
-  }
 });

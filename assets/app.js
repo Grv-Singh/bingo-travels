@@ -6,7 +6,33 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('bingo_leads');
   } catch (err) {}
 
-  // 1. Car 360 Turntable Logic
+  // 1. Mobile Hamburger Navigation Toggle
+  const burgerToggle = document.getElementById('burgerToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (burgerToggle && navMenu) {
+    burgerToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      const icon = burgerToggle.querySelector('i');
+      if (icon) {
+        if (navMenu.classList.contains('active')) {
+          icon.className = 'fas fa-times';
+        } else {
+          icon.className = 'fas fa-bars';
+        }
+      }
+    });
+
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        const icon = burgerToggle.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
+    });
+  }
+
+  // 2. Car 360 Turntable Logic
   const carImg = document.getElementById('carDisplayImg');
   const angleBtns = document.querySelectorAll('.angle-btn');
   const autoRotateBtn = document.getElementById('autoRotateBtn');
@@ -22,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let autoRotateInterval = null;
 
   function setCarAngle(index) {
+    if (!carImg) return;
     currentAngleIdx = (index + angles.length) % angles.length;
     carImg.style.opacity = '0';
     setTimeout(() => {
@@ -37,18 +64,37 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.remove('active');
       }
     });
+  }
 
-    // Close menu on link click
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const icon = burgerToggle.querySelector('i');
-        if (icon) icon.className = 'fas fa-bars';
+  if (angleBtns.length > 0) {
+    angleBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        if (autoRotateInterval) {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+          if (autoRotateBtn) autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto-Rotate 360°';
+        }
+        setCarAngle(idx);
       });
     });
   }
 
-  // 2. Photo Slider Logic (Hero / Photo Showcase)
+  if (autoRotateBtn) {
+    autoRotateBtn.addEventListener('click', () => {
+      if (autoRotateInterval) {
+        clearInterval(autoRotateInterval);
+        autoRotateInterval = null;
+        autoRotateBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Auto-Rotate 360°';
+      } else {
+        autoRotateInterval = setInterval(() => {
+          setCarAngle(currentAngleIdx + 1);
+        }, 1800);
+        autoRotateBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Rotation';
+      }
+    });
+  }
+
+  // 3. Photo Slider Logic (Hero / Photo Showcase)
   const slideItems = document.querySelectorAll('.slide-item');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.getElementById('sliderPrev');
@@ -111,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoSlide();
   }
 
-  // 3. Destinations Search Feature
+  // 4. Destinations Search Feature
   const destSearchInput = document.getElementById('destSearchInput');
   if (destSearchInput) {
     destSearchInput.addEventListener('input', (e) => {
@@ -135,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (visibleCards.length > 0 || stateTitle.includes(query) || query === '') {
           block.style.display = 'block';
           if (stateTitle.includes(query)) {
-            // Show all cards in this state if state matches
             block.querySelectorAll('.dest-card').forEach(c => c.style.display = 'flex');
           }
         } else {
@@ -145,32 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Tour Gallery Dynamic Filter & Load
+  // 5. Tour Gallery Dynamic Filter & Load
   const galleryGrid = document.getElementById('galleryGrid');
   const filterBtns = document.querySelectorAll('.filter-btn');
-
-  if (galleryGrid) {
-    fetch('assets/tours_data.json')
-      .then(res => res.json())
-      .then(data => {
-        renderGallery(data);
-
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.getAttribute('data-filter');
-            if (filter === 'all') {
-              renderGallery(data);
-            } else {
-              const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
-              renderGallery(filtered);
-            }
-          });
-        });
-      })
-      .catch(err => console.error('Gallery load error:', err));
-  }
 
   function sanitizeUrl(url) {
     if (!url) return '';
@@ -234,8 +256,31 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryGrid.appendChild(fragment);
   }
 
-  // 5. WhatsApp Booking Forms Handling
-  const bookingForms = document.querySelectorAll('form.lead-form');
+  if (galleryGrid) {
+    fetch('assets/tours_data.json')
+      .then(res => res.json())
+      .then(data => {
+        renderGallery(data);
+
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            if (filter === 'all') {
+              renderGallery(data);
+            } else {
+              const filtered = data.filter(item => item.category.toLowerCase().includes(filter.toLowerCase()));
+              renderGallery(filtered);
+            }
+          });
+        });
+      })
+      .catch(err => console.error('Gallery load error:', err));
+  }
+
+  // 6. WhatsApp Booking Forms Handling
+  const bookingForms = document.querySelectorAll('form.lead-form, form#quickBookingForm');
   bookingForms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -274,11 +319,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Open WhatsApp
       window.open(waUrl, '_blank', 'noopener,noreferrer');
       alert(`Thank you ${name}! Opening WhatsApp to connect with Jyotiram directly.`);
-      bookingForm.reset();
+      form.reset();
     });
-  }
+  });
 
-  // 4. Modal for RC Verification
+  // 7. Modal for RC Verification
   const rcModal = document.getElementById('rcModal');
   const viewRcBtn = document.getElementById('viewRcBtn');
   const closeRcModal = document.getElementById('closeRcModal');
@@ -287,5 +332,19 @@ document.addEventListener('DOMContentLoaded', () => {
     viewRcBtn.addEventListener('click', () => {
       rcModal.classList.add('active');
     });
-  });
+  }
+
+  if (closeRcModal && rcModal) {
+    closeRcModal.addEventListener('click', () => {
+      rcModal.classList.remove('active');
+    });
+  }
+
+  if (rcModal) {
+    rcModal.addEventListener('click', (e) => {
+      if (e.target === rcModal) {
+        rcModal.classList.remove('active');
+      }
+    });
+  }
 });

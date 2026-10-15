@@ -258,27 +258,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (calcRouteSelect && calcPriceDisplay) {
     let currentTrip = 'oneway';
-    let currentVeh = 'dzire';
+    let currentVeh = 'sedan';
 
     const routeData = {
       oneway: [
-        { val: 'jaipur-delhi', label: 'Jaipur to Delhi / IGI Airport', dzire: 4200, innova: 6000, crysta: 6800, tempo: 8500, desc: '260 km • ~4.5 hrs direct drop' },
-        { val: 'jaipur-agra', label: 'Jaipur to Agra (Taj Mahal)', dzire: 3800, innova: 5500, crysta: 6300, tempo: 7800, desc: '240 km • ~4 hrs direct drop' },
-        { val: 'jaipur-ajmer', label: 'Jaipur to Ajmer / Pushkar', dzire: 2600, innova: 3800, crysta: 4400, tempo: 5500, desc: '145 km • ~2.5 hrs direct drop' },
-        { val: 'jaipur-khatu', label: 'Jaipur to Khatu Shyam Ji / Salasar', dzire: 2500, innova: 3600, crysta: 4200, tempo: 5200, desc: '120 km • ~2 hrs direct drop' },
-        { val: 'jaipur-udaipur', label: 'Jaipur to Udaipur (Lake City)', dzire: 6500, innova: 9000, crysta: 10500, tempo: 13500, desc: '395 km • ~6.5 hrs direct drop' },
-        { val: 'jaipur-kota', label: 'Jaipur to Kota', dzire: 3800, innova: 5400, crysta: 6200, tempo: 7900, desc: '250 km • ~4 hrs direct drop' }
+        { val: 'jaipur-delhi', label: 'Jaipur to Delhi / IGI Airport', sedan: 4200, suv: 6000, premium: 6800, tempo: 8500, desc: '260 km • ~4.5 hrs direct drop' },
+        { val: 'jaipur-agra', label: 'Jaipur to Agra (Taj Mahal)', sedan: 3800, suv: 5500, premium: 6300, tempo: 7800, desc: '240 km • ~4 hrs direct drop' },
+        { val: 'jaipur-ajmer', label: 'Jaipur to Ajmer / Pushkar', sedan: 2600, suv: 3800, premium: 4400, tempo: 5500, desc: '145 km • ~2.5 hrs direct drop' },
+        { val: 'jaipur-khatu', label: 'Jaipur to Khatu Shyam Ji / Salasar', sedan: 2500, suv: 3600, premium: 4200, tempo: 5200, desc: '120 km • ~2 hrs direct drop' },
+        { val: 'jaipur-udaipur', label: 'Jaipur to Udaipur (Lake City)', sedan: 6500, suv: 9000, premium: 10500, tempo: 13500, desc: '395 km • ~6.5 hrs direct drop' },
+        { val: 'jaipur-kota', label: 'Jaipur to Kota', sedan: 3800, suv: 5400, premium: 6200, tempo: 7900, desc: '250 km • ~4 hrs direct drop' }
       ],
       outstation: [
-        { val: '2day-rajasthan', label: '2 Days Outstation (Min 500 km)', dzire: 5500, innova: 8000, crysta: 9000, tempo: 13200, desc: '₹11/km (Sedan), ₹16/km (SUV) • 250km/day min' },
-        { val: '3day-udaipur', label: '3 Days Udaipur & Kumbhalgarh (Min 750 km)', dzire: 8250, innova: 12000, crysta: 13500, tempo: 19800, desc: 'Complete 3-day return tour with fuel & driver' },
-        { val: '5day-golden-triangle', label: '5 Days Golden Triangle (Delhi-Agra-Jaipur)', dzire: 14500, innova: 21000, crysta: 24000, tempo: 33000, desc: 'Includes full interstate permit & highway drive' },
-        { val: '8day-chardham', label: '8-10 Days Uttarakhand 4 Dham Yatra', dzire: 27500, innova: 40000, crysta: 45000, tempo: 66000, desc: 'Kedarnath, Badrinath, Gangotri & Yamunotri package' }
+        { val: '2day-rajasthan', label: '2 Days Outstation (Min 500 km)', sedan: 5500, suv: 8000, premium: 9000, tempo: 13200, desc: '₹11/km (Sedan), ₹16/km (SUV) • 250km/day min' },
+        { val: '3day-udaipur', label: '3 Days Udaipur & Kumbhalgarh (Min 750 km)', sedan: 8250, suv: 12000, premium: 13500, tempo: 19800, desc: 'Complete 3-day return tour with fuel & driver' },
+        { val: '5day-golden-triangle', label: '5 Days Golden Triangle (Delhi-Agra-Jaipur)', sedan: 14500, suv: 21000, premium: 24000, tempo: 33000, desc: 'Includes full interstate permit & highway drive' },
+        { val: '8day-chardham', label: '8-10 Days Uttarakhand 4 Dham Yatra', sedan: 27500, suv: 40000, premium: 45000, tempo: 66000, desc: 'Kedarnath, Badrinath, Gangotri & Yamunotri package' }
       ],
       local: [
-        { val: 'local-8-80', label: 'Full Day Sightseeing (8 Hours / 80 Km)', dzire: 2000, innova: 3000, crysta: 3500, tempo: 5000, desc: 'Covers Amber Fort, Hawa Mahal, City Palace, Jal Mahal' },
-        { val: 'local-12-120', label: 'Extended Sightseeing (12 Hours / 120 Km)', dzire: 2600, innova: 3800, crysta: 4500, tempo: 6500, desc: 'Includes Nahargarh sunset, Chokhi Dhani evening tour' },
-        { val: 'airport-transfer', label: 'Jaipur Airport Pickup / Drop Transfer', dzire: 800, innova: 1400, crysta: 1800, tempo: 2500, desc: 'Punctual terminal pickup with luggage assistance' }
+        { val: 'local-8-80', label: 'Full Day Sightseeing (8 Hours / 80 Km)', sedan: 2000, suv: 3000, premium: 3500, tempo: 5000, desc: 'Covers Amber Fort, Hawa Mahal, City Palace, Jal Mahal' },
+        { val: 'local-12-120', label: 'Extended Sightseeing (12 Hours / 120 Km)', sedan: 2600, suv: 3800, premium: 4500, tempo: 6500, desc: 'Includes Nahargarh sunset, Chokhi Dhani evening tour' },
+        { val: 'airport-transfer', label: 'Jaipur Airport Pickup / Drop Transfer', sedan: 800, suv: 1400, premium: 1800, tempo: 2500, desc: 'Punctual terminal pickup with luggage assistance' }
       ]
     };
 
@@ -289,9 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const opt = document.createElement('option');
         opt.value = item.val;
         opt.textContent = item.label;
-        opt.dataset.dzire = item.dzire;
-        opt.dataset.innova = item.innova;
-        opt.dataset.crysta = item.crysta;
+        opt.dataset.sedan = item.sedan;
+        opt.dataset.suv = item.suv;
+        opt.dataset.premium = item.premium;
         opt.dataset.tempo = item.tempo;
         opt.dataset.desc = item.desc;
         calcRouteSelect.appendChild(opt);
@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const vehImgMap = {
-      dzire: 'assets/images/vehicles/sedan.png',
-      innova: 'assets/images/vehicles/suv.png',
-      crysta: 'assets/images/vehicles/premium_suv.png',
+      sedan: 'assets/images/vehicles/sedan.png',
+      suv: 'assets/images/vehicles/suv.png',
+      premium: 'assets/images/vehicles/premium_suv.png',
       tempo: 'assets/images/vehicles/tempo.png'
     };
 
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const desc = selected.dataset.desc || '';
       const routeText = selected.textContent;
-      const vehNameMap = { dzire: 'AC Sedan (4 Seater)', innova: 'Family SUV (6-7 Seater)', crysta: 'Premium SUV (VIP)', tempo: 'Tempo / Minibus (12-26 Seater)' };
+      const vehNameMap = { sedan: 'AC Sedan (4 Seater)', suv: 'Family SUV (6-7 Seater)', premium: 'Premium SUV (VIP 7 Seater)', tempo: 'Tempo / Minibus (12-26 Seater)' };
       const vehLabel = vehNameMap[currentVeh] || currentVeh;
 
       const calcVehImg = document.getElementById('calcVehImg');
@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const phone = phoneInput ? phoneInput.value.trim() : '';
         const routeText = selected ? selected.textContent : 'Jaipur Outstation';
         const desc = selected ? selected.dataset.desc || '' : '';
-        const vehNameMap = { dzire: 'AC Sedan (4 Seater)', innova: 'Family SUV (6-7 Seater)', crysta: 'Premium SUV (VIP)', tempo: 'Tempo / Minibus (12-26 Seater)' };
+        const vehNameMap = { sedan: 'AC Sedan (4 Seater)', suv: 'Family SUV (6-7 Seater)', premium: 'Premium SUV (VIP 7 Seater)', tempo: 'Tempo / Minibus (12-26 Seater)' };
         const vehLabel = vehNameMap[currentVeh] || currentVeh;
 
         const text = `*New Taxi Booking Inquiry - Bingo Tour & Travels*%0A%0A` +

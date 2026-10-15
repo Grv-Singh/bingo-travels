@@ -117,11 +117,8 @@
 
       <ul class="nav-menu" id="navMenu">
         <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="#fares" class="nav-link">Taxi Rates</a></li>
         <li><a href="destinations.html" class="nav-link">Destinations</a></li>
-        <li><a href="vehicles.html" class="nav-link">Fleet</a></li>
-        <li><a href="about.html" class="nav-link">About Us</a></li>
-        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
       </ul>
     </div>
   </header>
@@ -148,66 +145,7 @@
     </div>
   </div>
 
-  <!-- Hero Photo Slider with Sleek Pill Overlay Badge -->
-  <section class="slider-section" style="position: relative; background: #0b132b; padding: 25px 0 35px;">
-    <div class="container">
-      <div class="slider-container" style="box-shadow: 0 15px 35px rgba(0,0,0,0.4); border-radius: 16px; overflow: hidden; border: 1px solid rgba(212,175,55,0.3);">
-        <button class="slider-btn prev" id="sliderPrev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-btn next" id="sliderNext" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
-
-        <div class="slide-wrapper" style="height: 480px;">
-          <!-- Slide 1: Jaipur Pink City -->
-          <div class="slide-item active">
-            <img src="assets/images/tours/amer_fort_jaipur.jpg" alt="Amer Fort Jaipur">
-            <div class="slide-caption">
-              <span class="slide-pill-tag"><i class="fas fa-map-marker-alt"></i> Rajasthan &bull; 2 Days Tour</span>
-              <h3>Jaipur Pink City Heritage</h3>
-              <p>Amer Fort, Jal Mahal, Hawa Mahal, City Palace & Patrika Gate</p>
-            </div>
-          </div>
-
-          <!-- Slide 2: Kedarnath & 4 Dham -->
-          <div class="slide-item">
-            <img src="assets/images/tours/kedarnath_dham_trek.jpg" alt="Kedarnath Dham Trek">
-            <div class="slide-caption">
-              <span class="slide-pill-tag"><i class="fas fa-mountain"></i> Uttarakhand &bull; 9-10 Days Yatra</span>
-              <h3>Sacred Kedarnath & 4 Dham</h3>
-              <p>Kedarnath, Badrinath, Gangotri, Yamunotri, Haridwar & Rishikesh</p>
-            </div>
-          </div>
-
-          <!-- Slide 3: Khatu Shyam Ji & Salasar -->
-          <div class="slide-item">
-            <img src="assets/images/tours/khatu_shyam_ji_corridor.jpg" alt="Khatu Shyam Ji Dham">
-            <div class="slide-caption">
-              <span class="slide-pill-tag"><i class="fas fa-om"></i> Devotional &bull; 1-2 Days</span>
-              <h3>Khatu Shyam Ji & Salasar Balaji</h3>
-              <p>Shyam Kund, Toran Dwar, and Hanuman Mandir Darshan</p>
-            </div>
-          </div>
-
-          <!-- Slide 4: Ayodhya & Varanasi -->
-          <div class="slide-item">
-            <img src="assets/images/tours/international_guests_culture.jpg" alt="Ayodhya & Varanasi">
-            <div class="slide-caption">
-              <span class="slide-pill-tag"><i class="fas fa-place-of-worship"></i> Uttar Pradesh &bull; 3-4 Days</span>
-              <h3>Ayodhya Ram Mandir & Kashi Vishwanath</h3>
-              <p>Ram Lalla Vigrah, Saryu Ghat, and Varanasi Ganga Aarti</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="slider-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Hero Section with WhatsApp Lead Form & Vehicle Fleet Options -->
+<!-- Hero Section with WhatsApp Lead Form & Vehicle Fleet Options -->
   <section class="hero" style="padding-top: 30px;">
     <div class="container hero-grid">
       <div class="hero-content">
@@ -252,12 +190,12 @@
             <div class="calc-form-group">
               <label id="calcRouteLabel"><i class="fas fa-map-marker-alt"></i> Select Route / Destination</label>
               <select id="calcRouteSelect" class="calc-input-select">
-                <option value="jaipur-delhi" data-dzire="4200" data-innova="6000" data-crysta="6800" data-tempo="8500" data-desc="260 km • ~4.5 hrs direct drop">Jaipur to Delhi / IGI Airport</option>
-                <option value="jaipur-agra" data-dzire="3800" data-innova="5500" data-crysta="6300" data-tempo="7800" data-desc="240 km • ~4 hrs direct drop">Jaipur to Agra (Taj Mahal)</option>
-                <option value="jaipur-ajmer" data-dzire="2600" data-innova="3800" data-crysta="4400" data-tempo="5500" data-desc="145 km • ~2.5 hrs direct drop">Jaipur to Ajmer / Pushkar</option>
-                <option value="jaipur-khatu" data-dzire="2500" data-innova="3600" data-crysta="4200" data-tempo="5200" data-desc="120 km • ~2 hrs direct drop">Jaipur to Khatu Shyam Ji / Salasar</option>
-                <option value="jaipur-udaipur" data-dzire="6500" data-innova="9000" data-crysta="10500" data-tempo="13500" data-desc="395 km • ~6.5 hrs direct drop">Jaipur to Udaipur (Lake City)</option>
-                <option value="jaipur-kota" data-dzire="3800" data-innova="5400" data-crysta="6200" data-tempo="7900" data-desc="250 km • ~4 hrs direct drop">Jaipur to Kota</option>
+                <option value="jaipur-delhi" data-sedan="4200" data-suv="6000" data-premium="6800" data-tempo="8500" data-desc="260 km • ~4.5 hrs direct drop">Jaipur to Delhi / IGI Airport</option>
+                <option value="jaipur-agra" data-sedan="3800" data-suv="5500" data-premium="6300" data-tempo="7800" data-desc="240 km • ~4 hrs direct drop">Jaipur to Agra (Taj Mahal)</option>
+                <option value="jaipur-ajmer" data-sedan="2600" data-suv="3800" data-premium="4400" data-tempo="5500" data-desc="145 km • ~2.5 hrs direct drop">Jaipur to Ajmer / Pushkar</option>
+                <option value="jaipur-khatu" data-sedan="2500" data-suv="3600" data-premium="4200" data-tempo="5200" data-desc="120 km • ~2 hrs direct drop">Jaipur to Khatu Shyam Ji / Salasar</option>
+                <option value="jaipur-udaipur" data-sedan="6500" data-suv="9000" data-premium="10500" data-tempo="13500" data-desc="395 km • ~6.5 hrs direct drop">Jaipur to Udaipur (Lake City)</option>
+                <option value="jaipur-kota" data-sedan="3800" data-suv="5400" data-premium="6200" data-tempo="7900" data-desc="250 km • ~4 hrs direct drop">Jaipur to Kota</option>
               </select>
             </div>
 
@@ -265,15 +203,15 @@
             <div class="calc-form-group">
               <label><i class="fas fa-car"></i> Select Vehicle Type</label>
               <div class="calc-vehicle-selector">
-                <div class="calc-veh-option active" data-veh="dzire">
+                <div class="calc-veh-option active" data-veh="sedan">
                   <span class="veh-name">Sedan</span>
                   <span class="veh-rate">4 Seater</span>
                 </div>
-                <div class="calc-veh-option" data-veh="innova">
+                <div class="calc-veh-option" data-veh="suv">
                   <span class="veh-name">SUV</span>
                   <span class="veh-rate">6-7 Seater</span>
                 </div>
-                <div class="calc-veh-option" data-veh="crysta">
+                <div class="calc-veh-option" data-veh="premium">
                   <span class="veh-name">Premium SUV</span>
                   <span class="veh-rate">VIP 7 Seater</span>
                 </div>
@@ -572,11 +510,9 @@
         <h4>Quick Pages</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home Page</a></li>
-          <li><a href="destinations.html">Destinations by State</a></li>
+          <li><a href="destinations.html">Popular Destinations</a></li>
           <li><a href="vehicles.html">Vehicle Options</a></li>
-          <li><a href="gallery.html">Photo Gallery & Slider</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact & WhatsApp Inquiry</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
 

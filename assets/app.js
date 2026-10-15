@@ -325,7 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
       calcDescDisplay.textContent = `${routeText} • ${vehLabel} (${desc})`;
 
       const waMsg = encodeURIComponent(`Hi Jyotiram ji, I would like to check the best fare for:\n- Route: ${routeText}\n- Vehicle Type: ${vehLabel}\n- Detail: ${desc}\nPlease share the live rate & availability.`);
-      calcWaBtn.href = `https://wa.me/918058985804?text=${waMsg}`;
+      if (calcWaBtn) {
+        calcWaBtn.href = `https://wa.me/918058985804?text=${waMsg}`;
+      }
     }
 
     calcTabs.forEach(tab => {
@@ -360,25 +362,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const phoneInput = document.getElementById('calcPhone');
         const selected = calcRouteSelect.options[calcRouteSelect.selectedIndex];
 
-        const name = nameInput ? nameInput.value.trim() : 'Guest';
-        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Guest';
+        const phone = (phoneInput && phoneInput.value.trim()) ? phoneInput.value.trim() : 'Not provided';
         const routeText = selected ? selected.textContent : 'Jaipur Outstation';
-        const desc = selected ? selected.dataset.desc || '' : '';
-        const vehNameMap = { sedan: 'AC Sedan (4 Seater)', suv: 'Family SUV (6-7 Seater)', premium: 'Premium SUV (VIP 7 Seater)', tempo: 'Tempo / Minibus (12-26 Seater)' };
+        const desc = selected ? (selected.dataset.desc || '') : '';
+        const vehNameMap = {
+          sedan: 'AC Sedan (4 Seater)',
+          suv: 'Family SUV (6-7 Seater)',
+          premium: 'Premium SUV (VIP 7 Seater)',
+          tempo: 'Tempo / Minibus (12-26 Seater)'
+        };
         const vehLabel = vehNameMap[currentVeh] || currentVeh;
 
-        const text = `*New Taxi Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
-          `👤 *Name:* ${encodeURIComponent(name)}%0A` +
-          `📞 *Phone / WhatsApp:* ${encodeURIComponent(phone)}%0A` +
-          `📍 *Route / Circuit:* ${encodeURIComponent(routeText)}%0A` +
-          `🚗 *Vehicle Type:* ${encodeURIComponent(vehLabel)}%0A` +
-          `ℹ️ *Details:* ${encodeURIComponent(desc)}%0A%0A` +
+        const message = 
+          `*New Taxi Booking Request - Bingo Tour & Travels*\n\n` +
+          `• *Name:* ${name}\n` +
+          `• *Phone / WhatsApp:* ${phone}\n` +
+          `• *Route / Circuit:* ${routeText}\n` +
+          `• *Vehicle Type:* ${vehLabel}\n` +
+          `• *Details:* ${desc}\n\n` +
           `Hi Jyotiram ji, please confirm availability and best guaranteed fare.`;
 
-        const waUrl = `https://wa.me/918058985804?text=${text}`;
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-        heroBookingForm.reset();
-        calculate();
+        const waUrl = `https://wa.me/918058985804?text=${encodeURIComponent(message)}`;
+
+        // Open WhatsApp directly without popup blockers
+        window.open(waUrl, '_blank') || (window.location.href = waUrl);
       });
     }
   }

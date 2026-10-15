@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { val: 'jaipur-kota', label: 'Jaipur to Kota', dzire: 3800, innova: 5400, crysta: 6200, tempo: 7900, desc: '250 km • ~4 hrs direct drop' }
       ],
       outstation: [
-        { val: '2day-rajasthan', label: '2 Days Outstation (Min 500 km)', dzire: 5500, innova: 8000, crysta: 9000, tempo: 13200, desc: '₹11/km (Dzire), ₹16/km (Innova) • 250km/day min' },
+        { val: '2day-rajasthan', label: '2 Days Outstation (Min 500 km)', dzire: 5500, innova: 8000, crysta: 9000, tempo: 13200, desc: '₹11/km (Sedan), ₹16/km (SUV) • 250km/day min' },
         { val: '3day-udaipur', label: '3 Days Udaipur & Kumbhalgarh (Min 750 km)', dzire: 8250, innova: 12000, crysta: 13500, tempo: 19800, desc: 'Complete 3-day return tour with fuel & driver' },
         { val: '5day-golden-triangle', label: '5 Days Golden Triangle (Delhi-Agra-Jaipur)', dzire: 14500, innova: 21000, crysta: 24000, tempo: 33000, desc: 'Includes full interstate permit & highway drive' },
         { val: '8day-chardham', label: '8-10 Days Uttarakhand 4 Dham Yatra', dzire: 27500, innova: 40000, crysta: 45000, tempo: 66000, desc: 'Kedarnath, Badrinath, Gangotri & Yamunotri package' }
@@ -299,20 +299,32 @@ document.addEventListener('DOMContentLoaded', () => {
       calculate();
     }
 
+    const vehImgMap = {
+      dzire: 'assets/images/vehicles/sedan.png',
+      innova: 'assets/images/vehicles/suv.png',
+      crysta: 'assets/images/vehicles/premium_suv.png',
+      tempo: 'assets/images/vehicles/tempo.png'
+    };
+
     function calculate() {
       const selected = calcRouteSelect.options[calcRouteSelect.selectedIndex];
       if (!selected) return;
 
-      const price = selected.dataset[currentVeh] || '3000';
       const desc = selected.dataset.desc || '';
       const routeText = selected.textContent;
-      const vehNameMap = { dzire: 'Swift Dzire (Sedan)', innova: 'Toyota Innova (SUV)', crysta: 'Innova Crysta (VIP)', tempo: 'Tempo Traveller' };
+      const vehNameMap = { dzire: 'AC Sedan (4 Seater)', innova: 'Family SUV (6-7 Seater)', crysta: 'Premium SUV (VIP)', tempo: 'Tempo / Minibus (12-26 Seater)' };
       const vehLabel = vehNameMap[currentVeh] || currentVeh;
 
-      calcPriceDisplay.textContent = `₹${Number(price).toLocaleString('en-IN')}`;
+      const calcVehImg = document.getElementById('calcVehImg');
+      if (calcVehImg && vehImgMap[currentVeh]) {
+        calcVehImg.src = vehImgMap[currentVeh];
+        calcVehImg.alt = vehLabel;
+      }
+
+      calcPriceDisplay.textContent = 'Best Rate Guaranteed';
       calcDescDisplay.textContent = `${routeText} • ${vehLabel} (${desc})`;
 
-      const waMsg = encodeURIComponent(`Hi Jyotiram ji, I saw your website fare calculator and would like to book:\n- Trip: ${routeText}\n- Vehicle: ${vehLabel}\n- Estimated Price: ₹${Number(price).toLocaleString('en-IN')}\nPlease confirm availability.`);
+      const waMsg = encodeURIComponent(`Hi Jyotiram ji, I would like to check the best fare for:\n- Route: ${routeText}\n- Vehicle Type: ${vehLabel}\n- Detail: ${desc}\nPlease share the live rate & availability.`);
       calcWaBtn.href = `https://wa.me/918058985804?text=${waMsg}`;
     }
 

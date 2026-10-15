@@ -588,81 +588,129 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
 }
+.dest-grid,
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 28px;
 }
 .dest-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 15px rgba(11, 19, 43, 0.07);
   border: 1px solid #e2e8f0;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
 }
 .dest-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(11, 19, 43, 0.14);
   border-color: var(--accent);
 }
+.dest-img-wrap,
 .dest-card-img {
   position: relative;
-  height: 200px;
+  height: 220px;
+  background: #0b132b;
   overflow: hidden;
 }
+.dest-img-wrap img,
 .dest-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
+.dest-card:hover .dest-img-wrap img,
 .dest-card:hover .dest-card-img img {
-  transform: scale(1.08);
+  transform: scale(1.07);
 }
+.dest-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--accent);
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+.dest-body,
 .dest-card-body {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
+.dest-body h3,
 .dest-card-body h4 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 8px;
-}
-.dest-card-body p {
-  font-size: 0.88rem;
-  color: var(--text-light);
-  margin-bottom: 14px;
-  flex-grow: 1;
-}
-.attractions-list {
-  margin-bottom: 16px;
-}
-.attractions-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #475569;
-  letter-spacing: 0.5px;
   margin-bottom: 6px;
+  line-height: 1.35;
 }
-.attraction-tags {
+.dest-location {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-hover);
+  margin-bottom: 12px;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
-.attraction-tag {
-  background: #f1f5f9;
-  color: #334155;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.78rem;
+.dest-body p,
+.dest-card-body p {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+.dest-meta {
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  margin-bottom: 16px;
+}
+.dest-vehicles {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+  padding: 4px 12px;
+  border-radius: 6px;
   border: 1px solid #e2e8f0;
+}
+.btn-dest-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transition: var(--transition);
+}
+.btn-dest-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.38);
+  color: #ffffff;
 }
 
 /* Vehicle Options Cards */

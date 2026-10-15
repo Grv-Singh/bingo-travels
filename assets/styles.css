@@ -1142,3 +1142,277 @@ footer {
     font-size: 1.4rem;
   }
 }
+
+/* Trust Bar / Rating Strip */
+.trust-bar {
+  background: linear-gradient(90deg, #0b132b 0%, #1c2541 50%, #0b132b 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 12px 0;
+  color: #fff;
+}
+.trust-bar-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.trust-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.trust-bar-item i {
+  color: var(--accent);
+  font-size: 1rem;
+}
+.trust-stars {
+  color: #f59e0b;
+}
+
+/* Fares & Rate Card Section */
+.fares-section {
+  background: #f8fafc;
+  padding: 60px 0;
+}
+.fare-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+@media (max-width: 992px) {
+  .fare-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .fare-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.fare-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid #e2e8f0;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.fare-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.fare-card.popular {
+  border: 2px solid var(--accent);
+  position: relative;
+}
+.fare-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #0b132b;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.fare-card-vehicle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.fare-card-capacity {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+.fare-card-price {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.fare-card-price small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+.fare-card-specs {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 20px;
+  font-size: 0.85rem;
+  color: #475569;
+  text-align: left;
+  line-height: 1.8;
+}
+.fare-card-specs li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fare-card-specs li i {
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+/* One-Way Drop Table */
+.oneway-table-wrap {
+  margin-top: 40px;
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid #e2e8f0;
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+.oneway-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+.oneway-table th {
+  background: #0b132b;
+  color: #fff;
+  padding: 14px 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.oneway-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+.oneway-table tr:hover {
+  background: #f8fafc;
+}
+.oneway-table .price-val {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Reviews / Testimonials Section */
+.reviews-section {
+  background: #0b132b;
+  color: #fff;
+  padding: 60px 0;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 35px;
+}
+@media (max-width: 900px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.review-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+.review-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+.review-stars {
+  color: #f59e0b;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.review-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 18px;
+  flex-grow: 1;
+  font-style: italic;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px;
+}
+.review-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0b132b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+.review-meta h5 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #fff;
+}
+.review-meta span {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 60px 0;
+  background: #fff;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+@media (max-width: 800px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+}
+.faq-card h4 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.faq-card h4 i {
+  color: var(--accent);
+  margin-top: 3px;
+}
+.faq-card p {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+

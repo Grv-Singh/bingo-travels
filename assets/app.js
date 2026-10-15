@@ -351,5 +351,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calcRouteSelect.addEventListener('change', calculate);
     calculate();
+
+    const heroBookingForm = document.getElementById('heroBookingForm');
+    if (heroBookingForm) {
+      heroBookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById('calcName');
+        const phoneInput = document.getElementById('calcPhone');
+        const selected = calcRouteSelect.options[calcRouteSelect.selectedIndex];
+
+        const name = nameInput ? nameInput.value.trim() : 'Guest';
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const routeText = selected ? selected.textContent : 'Jaipur Outstation';
+        const desc = selected ? selected.dataset.desc || '' : '';
+        const vehNameMap = { dzire: 'AC Sedan (4 Seater)', innova: 'Family SUV (6-7 Seater)', crysta: 'Premium SUV (VIP)', tempo: 'Tempo / Minibus (12-26 Seater)' };
+        const vehLabel = vehNameMap[currentVeh] || currentVeh;
+
+        const text = `*New Taxi Booking Inquiry - Bingo Tour & Travels*%0A%0A` +
+          `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+          `📞 *Phone / WhatsApp:* ${encodeURIComponent(phone)}%0A` +
+          `📍 *Route / Circuit:* ${encodeURIComponent(routeText)}%0A` +
+          `🚗 *Vehicle Type:* ${encodeURIComponent(vehLabel)}%0A` +
+          `ℹ️ *Details:* ${encodeURIComponent(desc)}%0A%0A` +
+          `Hi Jyotiram ji, please confirm availability and best guaranteed fare.`;
+
+        const waUrl = `https://wa.me/918058985804?text=${text}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        heroBookingForm.reset();
+        calculate();
+      });
+    }
   }
 });

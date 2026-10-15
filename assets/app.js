@@ -246,4 +246,98 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
     });
   });
+
+  // 6. Interactive Visual Fare Estimator (Inspired by Savaari / Rajputana Cabs)
+  const calcTabs = document.querySelectorAll('.calc-tab-btn');
+  const calcRouteSelect = document.getElementById('calcRouteSelect');
+  const calcRouteLabel = document.getElementById('calcRouteLabel');
+  const calcVehOptions = document.querySelectorAll('.calc-veh-option');
+  const calcPriceDisplay = document.getElementById('calcPriceDisplay');
+  const calcDescDisplay = document.getElementById('calcDescDisplay');
+  const calcWaBtn = document.getElementById('calcWaBtn');
+
+  if (calcRouteSelect && calcPriceDisplay) {
+    let currentTrip = 'oneway';
+    let currentVeh = 'dzire';
+
+    const routeData = {
+      oneway: [
+        { val: 'jaipur-delhi', label: 'Jaipur to Delhi / IGI Airport', dzire: 4200, innova: 6000, crysta: 6800, tempo: 8500, desc: '260 km • ~4.5 hrs direct drop' },
+        { val: 'jaipur-agra', label: 'Jaipur to Agra (Taj Mahal)', dzire: 3800, innova: 5500, crysta: 6300, tempo: 7800, desc: '240 km • ~4 hrs direct drop' },
+        { val: 'jaipur-ajmer', label: 'Jaipur to Ajmer / Pushkar', dzire: 2600, innova: 3800, crysta: 4400, tempo: 5500, desc: '145 km • ~2.5 hrs direct drop' },
+        { val: 'jaipur-khatu', label: 'Jaipur to Khatu Shyam Ji / Salasar', dzire: 2500, innova: 3600, crysta: 4200, tempo: 5200, desc: '120 km • ~2 hrs direct drop' },
+        { val: 'jaipur-udaipur', label: 'Jaipur to Udaipur (Lake City)', dzire: 6500, innova: 9000, crysta: 10500, tempo: 13500, desc: '395 km • ~6.5 hrs direct drop' },
+        { val: 'jaipur-kota', label: 'Jaipur to Kota', dzire: 3800, innova: 5400, crysta: 6200, tempo: 7900, desc: '250 km • ~4 hrs direct drop' }
+      ],
+      outstation: [
+        { val: '2day-rajasthan', label: '2 Days Outstation (Min 500 km)', dzire: 5500, innova: 8000, crysta: 9000, tempo: 13200, desc: '₹11/km (Dzire), ₹16/km (Innova) • 250km/day min' },
+        { val: '3day-udaipur', label: '3 Days Udaipur & Kumbhalgarh (Min 750 km)', dzire: 8250, innova: 12000, crysta: 13500, tempo: 19800, desc: 'Complete 3-day return tour with fuel & driver' },
+        { val: '5day-golden-triangle', label: '5 Days Golden Triangle (Delhi-Agra-Jaipur)', dzire: 14500, innova: 21000, crysta: 24000, tempo: 33000, desc: 'Includes full interstate permit & highway drive' },
+        { val: '8day-chardham', label: '8-10 Days Uttarakhand 4 Dham Yatra', dzire: 27500, innova: 40000, crysta: 45000, tempo: 66000, desc: 'Kedarnath, Badrinath, Gangotri & Yamunotri package' }
+      ],
+      local: [
+        { val: 'local-8-80', label: 'Full Day Sightseeing (8 Hours / 80 Km)', dzire: 2000, innova: 3000, crysta: 3500, tempo: 5000, desc: 'Covers Amber Fort, Hawa Mahal, City Palace, Jal Mahal' },
+        { val: 'local-12-120', label: 'Extended Sightseeing (12 Hours / 120 Km)', dzire: 2600, innova: 3800, crysta: 4500, tempo: 6500, desc: 'Includes Nahargarh sunset, Chokhi Dhani evening tour' },
+        { val: 'airport-transfer', label: 'Jaipur Airport Pickup / Drop Transfer', dzire: 800, innova: 1400, crysta: 1800, tempo: 2500, desc: 'Punctual terminal pickup with luggage assistance' }
+      ]
+    };
+
+    function updateOptions() {
+      calcRouteSelect.textContent = '';
+      const list = routeData[currentTrip] || routeData.oneway;
+      list.forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.val;
+        opt.textContent = item.label;
+        opt.dataset.dzire = item.dzire;
+        opt.dataset.innova = item.innova;
+        opt.dataset.crysta = item.crysta;
+        opt.dataset.tempo = item.tempo;
+        opt.dataset.desc = item.desc;
+        calcRouteSelect.appendChild(opt);
+      });
+      calculate();
+    }
+
+    function calculate() {
+      const selected = calcRouteSelect.options[calcRouteSelect.selectedIndex];
+      if (!selected) return;
+
+      const price = selected.dataset[currentVeh] || '3000';
+      const desc = selected.dataset.desc || '';
+      const routeText = selected.textContent;
+      const vehNameMap = { dzire: 'Swift Dzire (Sedan)', innova: 'Toyota Innova (SUV)', crysta: 'Innova Crysta (VIP)', tempo: 'Tempo Traveller' };
+      const vehLabel = vehNameMap[currentVeh] || currentVeh;
+
+      calcPriceDisplay.textContent = `₹${Number(price).toLocaleString('en-IN')}`;
+      calcDescDisplay.textContent = `${routeText} • ${vehLabel} (${desc})`;
+
+      const waMsg = encodeURIComponent(`Hi Jyotiram ji, I saw your website fare calculator and would like to book:\n- Trip: ${routeText}\n- Vehicle: ${vehLabel}\n- Estimated Price: ₹${Number(price).toLocaleString('en-IN')}\nPlease confirm availability.`);
+      calcWaBtn.href = `https://wa.me/918058985804?text=${waMsg}`;
+    }
+
+    calcTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        calcTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentTrip = tab.dataset.trip;
+        if (currentTrip === 'oneway') calcRouteLabel.innerHTML = '<i class="fas fa-map-marker-alt"></i> Select Route Destination';
+        else if (currentTrip === 'outstation') calcRouteLabel.innerHTML = '<i class="fas fa-route"></i> Select Outstation Tour Duration';
+        else calcRouteLabel.innerHTML = '<i class="fas fa-clock"></i> Select Local Sightseeing Package';
+        updateOptions();
+      });
+    });
+
+    calcVehOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        calcVehOptions.forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+        currentVeh = opt.dataset.veh;
+        calculate();
+      });
+    });
+
+    calcRouteSelect.addEventListener('change', calculate);
+    calculate();
+  }
 });

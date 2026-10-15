@@ -340,6 +340,68 @@
         <p class="section-subtitle">No surge pricing, no hidden driver charges. Clear per-km and full-day local packages.</p>
       </div>
 
+      <!-- Visual Interactive Fare Estimator (Inspired by Savaari / Rajputana Cabs) -->
+      <div class="fare-calc-wrapper" id="calculator">
+        <div class="calc-header">
+          <h3><i class="fas fa-calculator" style="color: var(--accent);"></i> Instant Taxi Fare Estimator</h3>
+          <div class="calc-tabs">
+            <button type="button" class="calc-tab-btn active" data-trip="oneway">One-Way Drop</button>
+            <button type="button" class="calc-tab-btn" data-trip="outstation">Round Trip / Outstation</button>
+            <button type="button" class="calc-tab-btn" data-trip="local">Local Sightseeing</button>
+          </div>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-controls">
+            <!-- Route / Package Selector -->
+            <div class="calc-form-group">
+              <label id="calcRouteLabel"><i class="fas fa-map-marker-alt"></i> Select Route Destination</label>
+              <select id="calcRouteSelect" class="calc-input-select">
+                <option value="jaipur-delhi" data-dzire="4200" data-innova="6000" data-crysta="6800" data-tempo="8500" data-desc="260 km • ~4.5 hrs direct drop">Jaipur to Delhi / IGI Airport</option>
+                <option value="jaipur-agra" data-dzire="3800" data-innova="5500" data-crysta="6300" data-tempo="7800" data-desc="240 km • ~4 hrs direct drop">Jaipur to Agra (Taj Mahal)</option>
+                <option value="jaipur-ajmer" data-dzire="2600" data-innova="3800" data-crysta="4400" data-tempo="5500" data-desc="145 km • ~2.5 hrs direct drop">Jaipur to Ajmer / Pushkar</option>
+                <option value="jaipur-khatu" data-dzire="2500" data-innova="3600" data-crysta="4200" data-tempo="5200" data-desc="120 km • ~2 hrs direct drop">Jaipur to Khatu Shyam Ji / Salasar</option>
+                <option value="jaipur-udaipur" data-dzire="6500" data-innova="9000" data-crysta="10500" data-tempo="13500" data-desc="395 km • ~6.5 hrs direct drop">Jaipur to Udaipur (Lake City)</option>
+                <option value="jaipur-kota" data-dzire="3800" data-innova="5400" data-crysta="6200" data-tempo="7900" data-desc="250 km • ~4 hrs direct drop">Jaipur to Kota</option>
+              </select>
+            </div>
+
+            <!-- Vehicle Selection Cards -->
+            <div class="calc-form-group">
+              <label><i class="fas fa-car"></i> Select Vehicle</label>
+              <div class="calc-vehicle-selector">
+                <div class="calc-veh-option active" data-veh="dzire">
+                  <span class="veh-name">Dzire</span>
+                  <span class="veh-rate">Sedan (4 Seater)</span>
+                </div>
+                <div class="calc-veh-option" data-veh="innova">
+                  <span class="veh-name">Innova</span>
+                  <span class="veh-rate">SUV (7 Seater)</span>
+                </div>
+                <div class="calc-veh-option" data-veh="crysta">
+                  <span class="veh-name">Crysta</span>
+                  <span class="veh-rate">VIP (7 Seater)</span>
+                </div>
+                <div class="calc-veh-option" data-veh="tempo">
+                  <span class="veh-name">Tempo</span>
+                  <span class="veh-rate">12-26 Seater</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Display & Book Action -->
+          <div class="calc-result-box">
+            <span class="calc-price-lead">Estimated Fare</span>
+            <div class="calc-price-display" id="calcPriceDisplay">₹4,200</div>
+            <div class="calc-price-breakdown" id="calcDescDisplay">Jaipur to Delhi / IGI Airport (Swift Dzire)</div>
+            <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Jaipur%20to%20Delhi%20in%20Dzire" id="calcWaBtn" target="_blank" class="btn-lg-gold" style="width: 100%; justify-content: center; padding: 14px 20px;">
+              <i class="fab fa-whatsapp"></i> Book This Fare on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="fare-cards-grid">
         <!-- Dzire -->
         <div class="fare-card">
@@ -481,6 +543,29 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Visual Inclusions / Exclusions Comparison (Transparent Pricing) -->
+      <div class="inclusions-wrapper">
+        <div class="inclusion-card included">
+          <h4><i class="fas fa-check-circle"></i> Transparently Included in Every Booking</h4>
+          <ul class="inclusion-list">
+            <li class="inclusion-tag"><i class="fas fa-check"></i> Chauffeur Allowance</li>
+            <li class="inclusion-tag"><i class="fas fa-check"></i> Clean AC Vehicle</li>
+            <li class="inclusion-tag"><i class="fas fa-check"></i> Fuel / Diesel Cost</li>
+            <li class="inclusion-tag"><i class="fas fa-check"></i> Doorstep Pickup & Drop</li>
+            <li class="inclusion-tag"><i class="fas fa-check"></i> Luggage Assistance</li>
+            <li class="inclusion-tag"><i class="fas fa-check"></i> 24/7 Support Helpline</li>
+          </ul>
+        </div>
+        <div class="inclusion-card excluded">
+          <h4><i class="fas fa-receipt"></i> Billed at Actuals (Zero Markup)</h4>
+          <ul class="inclusion-list">
+            <li class="inclusion-tag"><i class="fas fa-info-circle"></i> Fastag Highway Toll Slips</li>
+            <li class="inclusion-tag"><i class="fas fa-info-circle"></i> State Border Entry Tax</li>
+            <li class="inclusion-tag"><i class="fas fa-info-circle"></i> Fort & Monument Parking</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>

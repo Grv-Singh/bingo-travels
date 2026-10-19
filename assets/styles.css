@@ -2009,6 +2009,53 @@ footer {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
 }
+/* Auto-scroll Infinite Sliders (Reviews & FAQ) */
+.slider-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 35px;
+  padding: 12px 0 20px 0;
+  cursor: grab;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+.slider-marquee-wrapper:active {
+  cursor: grabbing;
+}
+.slider-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  will-change: transform;
+}
+.reviews-track {
+  animation: reviewsMarquee 42s linear infinite;
+}
+.faq-track {
+  animation: faqMarquee 48s linear infinite;
+}
+.slider-marquee-wrapper:hover .slider-marquee-track,
+.slider-marquee-wrapper.is-paused .slider-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes reviewsMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes faqMarquee {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.reviews-track .review-card {
+  width: 360px;
+  flex: 0 0 360px;
+}
+.faq-track .faq-card {
+  width: 380px;
+  flex: 0 0 380px;
+}
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -2021,7 +2068,7 @@ footer {
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 18px;
-  padding: 30px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
@@ -2032,17 +2079,42 @@ footer {
   box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 0 20px rgba(212,175,55,0.15);
 }
 .review-stars {
-  color: #ffd700;
   display: flex;
-  gap: 4px;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+.review-stars .material-symbols-rounded {
+  font-size: 21px;
+}
+.ms-star-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+  color: #f59e0b;
+}
+.ms-star-half {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+  color: #f59e0b;
+}
+.ms-star-empty {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  color: rgba(245, 158, 11, 0.3);
+}
+.review-rating-score {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f6e05e;
+  margin-left: 8px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 2px 7px;
+  border-radius: 6px;
 }
 .review-text {
   color: #cbd5e1;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.93rem;
+  line-height: 1.65;
   font-style: italic;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   flex-grow: 1;
 }
 .review-author {
@@ -2063,6 +2135,7 @@ footer {
   justify-content: center;
   font-weight: 800;
   font-size: 0.95rem;
+  flex-shrink: 0;
 }
 .review-meta h5 {
   color: #ffffff;
@@ -2092,6 +2165,8 @@ footer {
   border: 1px solid #e2e8f0;
   box-shadow: 0 6px 18px rgba(11, 19, 43, 0.04);
   transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 .faq-card:hover {
   transform: translateY(-4px);
@@ -2513,4 +2588,31 @@ img[loading="lazy"]:not([src=""]) {
 .btn-gps-detect:hover {
   background: #ffd700;
   transform: scale(1.03);
+}
+
+
+/* Double-Column Attraction Checklist Grid */
+.dest-attractions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 14px;
+  margin: 12px 0 16px;
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.dest-attraction-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  color: #334155;
+  line-height: 1.35;
+}
+
+.dest-attraction-item .material-symbols-rounded {
+  font-size: 14px;
+  color: var(--accent);
+  flex-shrink: 0;
 }

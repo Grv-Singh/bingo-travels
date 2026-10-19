@@ -524,7 +524,21 @@ function initGPSDetection() {
   }
 }
 
+// Infinite Marquee Slider Touch Pause Handling
+function initMarqueeSliders() {
+  const marquees = document.querySelectorAll('.slider-marquee-wrapper');
+  marquees.forEach(marquee => {
+    marquee.addEventListener('touchstart', () => {
+      marquee.classList.add('is-paused');
+    }, { passive: true });
+    marquee.addEventListener('touchend', () => {
+      setTimeout(() => marquee.classList.remove('is-paused'), 1200);
+    }, { passive: true });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initCardSliders();
   initGPSDetection();
+  initMarqueeSliders();
 });

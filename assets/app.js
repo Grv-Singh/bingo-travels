@@ -1,3 +1,25 @@
+
+// Global Window Preloader Dismissal
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.remove();
+      }, 700);
+    }, 400);
+  }
+});
+// Fallback dismiss after 2.5s in case of delayed assets
+setTimeout(() => {
+  const preloader = document.getElementById('preloader');
+  if (preloader && !preloader.classList.contains('fade-out')) {
+    preloader.classList.add('fade-out');
+    setTimeout(() => { preloader.remove(); }, 700);
+  }
+}, 2500);
+
 // Bingo Tour & Travels Interactive Scripts
 
 document.addEventListener('DOMContentLoaded', () => {

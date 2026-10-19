@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -21,12 +21,12 @@
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="top-bar-left">
-        <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" class="top-link"><i class="fas fa-map-marker-alt"></i> Sanganer, Jaipur, Rajasthan</a>
-        <span><i class="fas fa-clock"></i> 24 Hours Open Taxi Service</span>
+        <a href="https://goo.gl/maps/xyRiiDRV7peyKdRq9?g_st=ac" target="_blank" class="top-link"><span class="material-symbols-rounded ms-icon">location_on</span> Sanganer, Jaipur, Rajasthan</a>
+        <span><span class="material-symbols-rounded ms-icon">schedule</span> 24 Hours Open Taxi Service</span>
       </div>
       <div class="top-bar-right">
-        <a href="tel:+918058985804" class="top-link"><i class="fas fa-phone-alt"></i> +91 80589 85804</a>
-        <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="top-link"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
+        <a href="tel:+918058985804" class="top-link"><span class="material-symbols-rounded ms-icon">call</span> +91 80589 85804</a>
+        <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="top-link"><svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> WhatsApp Booking</a>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
       </a>
 
       <button class="burger-toggle" id="burgerToggle" aria-label="Toggle Navigation">
-        <i class="fas fa-bars"></i>
+        <span class="material-symbols-rounded ms-icon">menu</span>
       </button>
 
       <ul class="nav-menu" id="navMenu">
@@ -67,7 +67,7 @@
   <section style="background: var(--dark-surface); padding: 20px 0; border-bottom: 1px solid var(--border-color);">
     <div class="container" style="max-width: 650px;">
       <div style="position: relative;">
-        <i class="fas fa-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.1rem;"></i>
+        <span class="material-symbols-rounded ms-icon" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 1.1rem;">search</span>
         <input type="text" id="destSearchInput" placeholder="Search destination (e.g. Kedarnath, Khatu, Agra, Udaipur, Manali)..." style="width: 100%; padding: 14px 16px 14px 45px; background: rgba(255,255,255,0.07); border: 1px solid var(--border-color); border-radius: 30px; color: var(--text-light); font-size: 0.95rem; outline: none;">
       </div>
     </div>
@@ -82,17 +82,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/amer_fort_jaipur.jpg" alt="Amer Fort Jaipur">
-            <span class="dest-badge"><i class="fas fa-clock"></i> 2 Days Tour</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">schedule</span> 2 Days Tour</span>
           </div>
           <div class="dest-body">
             <h3>Jaipur Pink City Heritage</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Rajasthan</p>
             <p>Amer Fort, Jal Mahal, Hawa Mahal, City Palace, Jantar Mantar, Nahargarh sunset view & Patrika Gate.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Jaipur%20Pink%20City%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -101,17 +101,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/kedarnath_dham_trek.jpg" alt="Kedarnath Dham Uttarakhand">
-            <span class="dest-badge"><i class="fas fa-mountain"></i> 9-10 Days Yatra</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">landscape</span> 9-10 Days Yatra</span>
           </div>
           <div class="dest-body">
             <h3>Sacred Kedarnath & 4 Dham</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Uttarakhand</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Uttarakhand</p>
             <p>Kedarnath Dham Jyotirlinga, Badrinath Temple, Gangotri, Yamunotri, Haridwar, Rishikesh & Devprayag Sangam.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Kedarnath%204%20Dham%20Yatra" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -120,17 +120,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/khatu_shyam_ji_corridor.jpg" alt="Khatu Shyam Ji Temple Sikar">
-            <span class="dest-badge"><i class="fas fa-om"></i> Same Day / 1 Day</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">temple_hindu</span> Same Day / 1 Day</span>
           </div>
           <div class="dest-body">
             <h3>Khatu Shyam Ji Dham</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Khatu, Sikar, Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Khatu, Sikar, Rajasthan</p>
             <p>Sacred Shri Khatu Shyam Ji Temple darshan, Shyam Kund, Toran Dwar, VIP line assistance, and Ringas roadtrip.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Khatu%20Shyam%20Ji%20Cab" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -139,17 +139,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/salasar_balaji_dham.jpg" alt="Salasar Balaji Hanuman Mandir">
-            <span class="dest-badge"><i class="fas fa-praying-hands"></i> 1 Day Devotional</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">folded_hands</span> 1 Day Devotional</span>
           </div>
           <div class="dest-body">
             <h3>Salasar Balaji Hanuman Dham</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Salasar, Churu, Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Salasar, Churu, Rajasthan</p>
             <p>Miraculous round-faced Lord Hanumanji idol darshan, coconut tying ritual, Anjani Mata Mandir & Mohan Mandir.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Salasar%20Balaji%20Cab" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -158,17 +158,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/taj_mahal_agra.jpg" alt="Taj Mahal Agra">
-            <span class="dest-badge"><i class="fas fa-clock"></i> Same Day / 1 Day</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">schedule</span> Same Day / 1 Day</span>
           </div>
           <div class="dest-body">
             <h3>Agra Taj Mahal & Fort</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Uttar Pradesh</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Uttar Pradesh</p>
             <p>Wonder of the World Taj Mahal, UNESCO Agra Fort, Mehtab Bagh sunset viewpoint & Fatehpur Sikri Buland Darwaza.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Agra%20Taj%20Mahal%20Cab" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -177,17 +177,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/udaipur_lake_pichola.jpg" alt="Lake Pichola Udaipur">
-            <span class="dest-badge"><i class="fas fa-water"></i> 3 Days Heritage</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">waves</span> 3 Days Heritage</span>
           </div>
           <div class="dest-body">
             <h3>Udaipur City of Lakes</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Mewar, Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Mewar, Rajasthan</p>
             <p>Lake Pichola Boat Ride, City Palace, Jag Mandir, Saheliyon Ki Bari, Fateh Sagar Lake, and Monsoon Palace.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Udaipur%20Tour%20Package" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -196,17 +196,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/ayodhya_ram_mandir.jpg" alt="Ayodhya Ram Mandir">
-            <span class="dest-badge"><i class="fas fa-place-of-worship"></i> 3-4 Days Pilgrimage</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">temple_buddhist</span> 3-4 Days Pilgrimage</span>
           </div>
           <div class="dest-body">
             <h3>Ayodhya Ram Mandir & Varanasi</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Uttar Pradesh</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Uttar Pradesh</p>
             <p>Grand Shri Ram Janmabhoomi Mandir, Kanak Bhawan, Hanuman Garhi, Saryu River Ghat, Kashi Vishwanath & Ganga Aarti.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Ayodhya%20Varanasi%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -215,17 +215,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/vrindavan_prem_mandir.jpg" alt="Prem Mandir Vrindavan">
-            <span class="dest-badge"><i class="fas fa-pray"></i> 2 Days Devotional</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">folded_hands</span> 2 Days Devotional</span>
           </div>
           <div class="dest-body">
             <h3>Mathura & Vrindavan Braj Dham</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Uttar Pradesh</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Uttar Pradesh</p>
             <p>Prem Mandir lighting, Shri Banke Bihari Mandir, ISKCON Vrindavan, Shri Krishna Janmabhoomi & Govardhan Parikrama.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Mathura%20Vrindavan%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -234,17 +234,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/haridwar_ganga_aarti.jpg" alt="Har Ki Pauri Haridwar">
-            <span class="dest-badge"><i class="fas fa-fire"></i> 2-3 Days Spiritual</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">local_fire_department</span> 2-3 Days Spiritual</span>
           </div>
           <div class="dest-body">
             <h3>Haridwar & Rishikesh</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Uttarakhand</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Uttarakhand</p>
             <p>Evening Ganga Aarti at Har Ki Pauri, Mansa Devi Ropeway, Ram Jhula, Laxman Jhula, Triveni Ghat & Ganga Rafting.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Haridwar%20Rishikesh%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -253,17 +253,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/manali_solang_valley.jpg" alt="Solang Valley Manali">
-            <span class="dest-badge"><i class="fas fa-snowflake"></i> 5-6 Days Hill Station</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">ac_unit</span> 5-6 Days Hill Station</span>
           </div>
           <div class="dest-body">
             <h3>Shimla & Manali Mountain Tour</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Himachal Pradesh</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Himachal Pradesh</p>
             <p>Solang Valley snow adventures, Atal Tunnel, Mall Road Shimla, Kufri, Rohtang Pass viewpoint, and Hadimba Temple.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Shimla%20Manali%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -272,17 +272,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/jaisalmer_desert_safari.jpg" alt="Jaisalmer Desert Safari">
-            <span class="dest-badge"><i class="fas fa-sun"></i> 3-4 Days Desert Tour</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">wb_sunny</span> 3-4 Days Desert Tour</span>
           </div>
           <div class="dest-body">
             <h3>Jaisalmer Golden Fort & Sand Dunes</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Thar Desert, Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Thar Desert, Rajasthan</p>
             <p>Sam Sand Dunes jeep safari, Camel ride, Golden Fort (Sonar Qila), Patwon Ki Haveli, and Desert Cultural Night.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Jaisalmer%20Desert%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -291,17 +291,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/pushkar_holy_lake.jpg" alt="Pushkar Holy Lake">
-            <span class="dest-badge"><i class="fas fa-clock"></i> 1-2 Days Return</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">schedule</span> 1-2 Days Return</span>
           </div>
           <div class="dest-body">
             <h3>Pushkar Holy Lake & Ajmer Sharif</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Rajasthan</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Rajasthan</p>
             <p>Rare Jagatpita Brahma Temple, 52 Holy Sarovar Ghats, Savitri Devi Temple hill ropeway & Khwaja Garib Nawaz Dargah.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Pushkar%20Ajmer%20Tour" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -310,17 +310,17 @@
         <div class="dest-card">
           <div class="dest-img-wrap">
             <img src="assets/images/tours/delhi_india_gate.jpg" alt="India Gate Delhi">
-            <span class="dest-badge"><i class="fas fa-plane-departure"></i> One-Way Drop (~4.5 hrs)</span>
+            <span class="dest-badge"><span class="material-symbols-rounded ms-icon">flight_takeoff</span> One-Way Drop (~4.5 hrs)</span>
           </div>
           <div class="dest-body">
             <h3>Delhi NCR & IGI Airport Transfer</h3>
-            <p class="dest-location"><i class="fas fa-map-marker-alt"></i> Delhi / NCR</p>
+            <p class="dest-location"><span class="material-symbols-rounded ms-icon">location_on</span> Delhi / NCR</p>
             <p>Direct door-to-terminal drop for IGI T3/T1, Gurugram Cyber Hub, Noida, India Gate, and central Delhi stops.</p>
             <div class="dest-meta">
-              <span class="dest-vehicles"><i class="fas fa-car"></i> Sedan • SUV • Tempo</span>
+              <span class="dest-vehicles"><span class="material-symbols-rounded ms-icon">directions_car</span> Sedan • SUV • Tempo</span>
             </div>
             <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20want%20to%20book%20Delhi%20Airport%20Transfer" target="_blank" class="btn-dest-wa">
-              <i class="fab fa-whatsapp"></i> Book on WhatsApp
+              <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg> Book on WhatsApp
             </a>
           </div>
         </div>
@@ -361,19 +361,19 @@
       <div class="footer-col">
         <h4>Contact Owner</h4>
         <div class="footer-contact-item">
-          <i class="fas fa-user-circle"></i>
+          <span class="material-symbols-rounded ms-icon">person</span>
           <span>Jyotiram (Owner)</span>
         </div>
         <div class="footer-contact-item">
-          <i class="fas fa-phone-alt"></i>
+          <span class="material-symbols-rounded ms-icon">call</span>
           <span>+91 80589 85804</span>
         </div>
         <div class="footer-contact-item">
-          <i class="fab fa-whatsapp"></i>
+          <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
           <span>+91 80589 85804</span>
         </div>
         <div class="footer-contact-item">
-          <i class="fas fa-map-marker-alt"></i>
+          <span class="material-symbols-rounded ms-icon">location_on</span>
           <span>Sanganer, Jaipur 302029</span>
         </div>
       </div>
@@ -387,11 +387,11 @@
   <!-- Floating Action Buttons -->
   <div class="floating-actions">
     <a href="https://wa.me/918058985804?text=Hi%20Jyotiram%20ji,%20I%20need%20a%20taxi%20booking" target="_blank" class="float-btn float-wa" title="WhatsApp Us">
-      <i class="fab fa-whatsapp"></i>
+      <svg class="ms-wa-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.83-1.32-1.27-2.85-1.27-4.48 0-4.54 3.7-8.24 8.28-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.28 8.24zm4.53-6.19c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
       <span class="float-btn-text">WhatsApp</span>
     </a>
     <a href="tel:+918058985804" class="float-btn float-call" title="Call Now">
-      <i class="fas fa-phone-alt"></i>
+      <span class="material-symbols-rounded ms-icon">call</span>
       <span class="float-btn-text">Call Now</span>
     </a>
   </div>

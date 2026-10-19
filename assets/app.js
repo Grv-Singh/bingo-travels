@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (burgerToggle && navMenu) {
     burgerToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
-      const icon = burgerToggle.querySelector('i');
+      const icon = burgerToggle.querySelector('.material-symbols-rounded, i');
       if (icon) {
-        icon.className = navMenu.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        icon.textContent = navMenu.classList.contains('active') ? 'close' : 'menu';
       }
     });
 
     navMenu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        const icon = burgerToggle.querySelector('i');
-        if (icon) icon.className = 'fas fa-bars';
+        const icon = burgerToggle.querySelector('.material-symbols-rounded, i');
+        if (icon) icon.textContent = 'menu';
       });
     });
   }

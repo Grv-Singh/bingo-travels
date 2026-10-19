@@ -396,10 +396,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         const vehLabel = vehNameMap[currentVeh] || currentVeh;
 
+        const locationStr = window.userGPSLocation ? `\n• *User Location (GPS):* ${window.userGPSLocation}` : '';
+
         const message = 
           `*New Taxi Booking Request - Bingo Tour & Travels*\n\n` +
           `• *Name:* ${name}\n` +
-          `• *Phone / WhatsApp:* ${phone}\n` +
+          `• *Phone / Mobile:* ${phone}` +
+          locationStr + `\n` +
           `• *Route / Circuit:* ${routeText}\n` +
           `• *Vehicle Type:* ${vehLabel}\n` +
           `• *Details:* ${desc}\n\n` +
@@ -412,4 +415,116 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+});
+
+
+// Multi-Photo Card Slider with Auto-slide, Manual Navigation and Swipe Support
+function initCardSliders() {
+  const sliders = document.querySelectorAll('.dest-img-wrap[data-slider="true"]');
+  sliders.forEach(slider => {
+    const slides = slider.querySelector('.dest-slides');
+    const dots = slider.querySelectorAll('.dest-slider-dot');
+    const prevBtn = slider.querySelector('.dest-slider-nav.prev');
+    const nextBtn = slider.querySelector('.dest-slider-nav.next');
+    const captionEl = slider.querySelector('.dest-caption-overlay');
+    const total = slider.querySelectorAll('.dest-slide-img').length;
+    if (total <= 1) return;
+
+    let current = 0;
+    let timer = null;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      if (slides) slides.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+      if (captionEl) {
+        const curImg = slider.querySelectorAll('.dest-slide-img')[current];
+        if (curImg && curImg.alt) captionEl.textContent = curImg.alt;
+      }
+    }
+
+    function startAuto() {
+      stopAuto();
+      timer = setInterval(() => goTo(current + 1), 3800 + Math.random() * 800);
+    }
+
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goTo(current + 1);
+        startAuto();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goTo(current - 1);
+        startAuto();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        goTo(i);
+        startAuto();
+      });
+    });
+
+    // Touch swipe support (left / right)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAuto();
+    }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 40) goTo(current + 1);
+      else if (touchEndX - touchStartX > 40) goTo(current - 1);
+      startAuto();
+    }, { passive: true });
+
+    slider.addEventListener('mouseenter', stopAuto);
+    slider.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+  });
+}
+
+// GPS Location Detection Permission & Geolocation Integration
+function initGPSDetection() {
+  const detectBtn = document.getElementById('detectGPSBtn');
+  const gpsStatus = document.getElementById('gpsStatusText');
+  const nameInput = document.getElementById('calcName');
+
+  if (detectBtn && navigator.geolocation) {
+    detectBtn.addEventListener('click', () => {
+      if (gpsStatus) gpsStatus.textContent = 'Locating you...';
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude.toFixed(4);
+          const lon = pos.coords.longitude.toFixed(4);
+          window.userGPSLocation = `Lat ${lat}, Lon ${lon}`;
+          if (gpsStatus) gpsStatus.innerHTML = `<span class="material-symbols-rounded" style="font-size:14px;vertical-align:-2px;color:var(--accent);">my_location</span> Location detected: ${lat}, ${lon}`;
+          detectBtn.textContent = 'Detected';
+          detectBtn.style.background = '#25d366';
+          detectBtn.style.color = '#fff';
+        },
+        (err) => {
+          if (gpsStatus) gpsStatus.textContent = 'Location permission denied. Enter manually.';
+        },
+        { timeout: 10000, enableHighAccuracy: true }
+      );
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCardSliders();
+  initGPSDetection();
 });

@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="assets/styles.css?v=1792422851">
+  <link rel="stylesheet" href="assets/styles.css?v=1792423414">
 
   <!-- Structured Data JSON-LD (SEO & AI Search) -->
   <script type="application/ld+json">
@@ -196,6 +196,12 @@
 
         <div class="calc-grid">
           <div class="calc-controls">
+            <!-- GPS Location Auto-Detection Bar -->
+            <div class="gps-bar">
+              <span id="gpsStatusText"><span class="material-symbols-rounded" style="font-size: 16px; vertical-align: -2px; color: var(--accent);">my_location</span> Detect your current pickup location</span>
+              <button type="button" class="btn-gps-detect" id="detectGPSBtn"><span class="material-symbols-rounded" style="font-size: 14px;">near_me</span> Use GPS</button>
+            </div>
+
             <!-- Route Selection -->
             <div class="calc-form-group">
               <label id="calcRouteLabel"><span class="material-symbols-rounded ms-icon">location_on</span> Select Route / Destination</label>
@@ -566,6 +572,6 @@
     </a>
   </div>
 
-  <script src="assets/app.js?v=1792422851"></script>
+  <script src="assets/app.js?v=1792423414"></script>
 </body>
 </html>
